@@ -1,0 +1,17 @@
+@media (max-width: 930px){
+    body{
+        background-image: url(/assets/logginAssets/videoReplacement.webp);
+        background-position: center;
+        background-size: cover;
+    }
+    .backgroundSection {
+display: none;
+       height: 700px;
+      }
+
+      .logginSection {
+ position: relative;
+ margin-bottom: 80px;
+      }
+      
+}

@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PurpleSky Mujer</title>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/mediasQueries.css" />
+  <link rel="stylesheet" href="/assets/css/clothingman.css" />
+  <link rel="stylesheet" href="/assets/css/mediasQueries.css" />
+  <link rel="stylesheet" href="/assets/css/mediasQManWoman.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:wght@500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+  <section class="discountSection">
+    <div class="discountContainer">
+      <p>¡ENVIOS A TODO EL PAIS!</p>
+      <p>¡ENVIO EXPRESS GRATIS A PARTIR DE LOS $20.000!</p>
+      <p>¡HASTA 3 CUOTAS SIN INTERES!</p>
+      <p>¡ENVIO GRATIS A PARTIR DE $10.000!</p>
+    </div>
+  </section>
+  <header class="headerSection">
+    <a href="/index.html">
+      <img src="/assets/headerAssets/logoHeader.svg" alt="" /></a>
+
+    <input type="checkbox" id="burgerMenu" />
+    <nav class="navContainer">
+      <label for="burgerMenu">
+        <img src="/assets/headerAssets/exitBurger.svg" alt="" id="exitBurger" />
+      </label>
+
+      <ul>
+        <li><a href="/index.html">VOLVER AL INICIO </a></li>
+        <li><a href="/htmls/clothingman.html">HOMBRE</a></li>
+
+        <li><a href="#">SKATEBOARDING</a></li>
+        <li><a href="/htmls/clothingZapas.html">CALZADOS</a></li>
+        <li><a href="#" id="hotSale">¡ HOTSALE !</a></li>
+      </ul>
+    </nav>
+    <div class="headerSection--loggin-register">
+      <nav class="burger--loggin-register">
+        <ul>
+          <li><a href="/htmls/loggin.html">INICIAR SESION!</a></li>
+          <li><a href="#">¡REGISTRARSE!</a></li>
+        </ul>
+        <label for="burgerMenu">
+          <img src="/assets/headerAssets/burgerMenu.svg" alt="" />
+        </label>
+      </nav>
+      <a href="/htmls/loggin.html">
+        <div data-tooltip="¡INICIAR SESION!" data-flow="bottom" class="loggin-register">
+          <img src="/assets/headerAssets/logginIcon.svg" alt="" />
+        </div>
+      </a>
+      <div data-tooltip="No estas registrado? ¡Registrate!" data-flow="bottom" class="loggin-register">
+        <img src="/assets/headerAssets/registerIcon.svg" alt="" />
+      </div>
+    </div>
+  </header>
+  <section class="bannerSection">
+    <a href="#">
+      <img src="/assets/banners/vans-banner.webp" alt="">
+    </a>
+  </section>
+  <main class="mainSection">
+    <aside class="assideSection">
+      <input type="checkbox" name="" id="assideMenu" />
+      <div class="dropdownMenu">
+        <ul>
+          <li class="dropdownMenu-Selectors">
+            <p>PRECIO</p>
+          </li>
+          <p>Ingrese rango de precio</p>
+          <span class="dropdownMenu-Selectors__priceRange">
+            <input type="number" name="" id="" placeholder="Minimo" min="1" max="1000000"> -
+            <input type="number" name="" id="" placeholder="Maximo" min="1" max="1000000"></span>
+          <button class="dropdownMenu-Selectors__priceRange__button">Filtrar</button>
+          <li class="dropdownMenu-Selectors">
+            <label for="showDropDownOptions-estilo" class="showDropDownOptions"><span>ESTILO</span> <i
+                class="fa fa-arrow-circle-down" aria-hidden="true"></i> </label>
+
+          </li>
+          <input type="checkbox" id="showDropDownOptions-estilo">
+          <ul class="interior">
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="PURPLESKY" />
+              <label for="PURPLESKY">PURPLESKY</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="COOLHAAS" />
+              <label for="COOLHAAS">COOLHAAS</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="DC" /> <label for="DC">DC</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="QUIKSILVER" />
+              <label for="QUIKSILVER">QUIKSILVER</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="RUSTY" />
+              <label for="RUSTY">RUSTY</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="VANS" /> <label for="VANS">VANS</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="BURTON" />
+              <label for="BURTON">BURTON</label>
+          </ul>
+          </li>
+
+          <li class="dropdownMenu-Selectors">
+            <label for="showDropDownOptions-talle" class="showDropDownOptions"><span>TALLE</span> <i
+                class="fa fa-arrow-circle-down" aria-hidden="true"></i> </label>
+
+
+          </li>
+          <input type="checkbox" id="showDropDownOptions-talle">
+          <ul class="interior">
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="XS" />
+              <label for="XS">XS</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="S" />
+              <label for="S">S</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="M" /> <label for="M">M</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="L" />
+              <label for="L">L</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="XL" />
+              <label for="XL">XL</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="XXL" />
+              <label for="XXL">XXL</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="XXXL" /> <label for="XXXL">XXXL</label>
+            </li>
+
+          </ul>
+          <li class="dropdownMenu-Selectors">
+            <label for="showDropDownOptions-color" class="showDropDownOptions"><span>COLOR</span> <i
+                class="fa fa-arrow-circle-down" aria-hidden="true"></i> </label>
+
+
+          </li>
+          <input type="checkbox" id="showDropDownOptions-color">
+          <ul class="interior">
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="NEGRO" />
+              <label for="NEGRO">NEGRO</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="PURPURA" />
+              <label for="PURPURA">PURPURA</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="AZUL" /> <label for="AZUL">AZUL</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="LADRILLO" />
+              <label for="LADRILLO">LADRILLO</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="GRIS" />
+              <label for="GRIS">GRIS</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="BLANCO" />
+              <label for="BLANCO">BLANCO</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="NATURAL" /> <label for="NATURAL">NATURAL</label>
+            </li>
+
+          </ul>
+
+          <li class="dropdownMenu-Selectors">
+            <label for="showDropDownOptions-prenda" class="showDropDownOptions"><span>TIPO DE PRENDA</span> <i
+                class="fa fa-arrow-circle-down" aria-hidden="true"></i> </label>
+
+
+          </li>
+          <input type="checkbox" id="showDropDownOptions-prenda">
+          <ul class="interior">
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="REMERAS" />
+              <label for="REMERAS">REMERAS</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="JEANS" />
+              <label for="JEANS">JEANS</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="SHORTS" /> <label for="SHORTS">SHORTS</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="PANTALONES" />
+              <label for="PANTALONES">PANTALONES</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="BERMUDAS" />
+              <label for="BERMUDAS">BERMUDAS</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="ABRIGO" />
+              <label for="ABRIGO">ABRIGO</label>
+            </li>
+            <li class="dropdownMenu-options">
+              <input type="checkbox" id="CAMISAS" /> <label for="CAMISAS">CAMISAS</label>
+            </li>
+
+          </ul>
+        </ul>
+      </div>
+      <label for="assideMenu" class="toggleAsside">
+        <h2 class="">FILTROS</h2>
+      </label>
+    </aside>
+
+
+
+    <section class="cardsSection">
+
+      <div class="clothingCards">
+        <img src="/assets/clothes/woman/1.webp" alt="">
+        <div class="clothingCards_div">
+          <p>JEAN RIFFLE AL TOBILLO</p>
+          <p>$17.500,00</p>
+          <p>4 cuotas sin interés de $4.375,00</p>
+          <span>
+            <button class="clothingCards__button">AGREGAR AL CARRITO</button>
+            <button class="clothingCards__button">COMPRAR</button>
+          </span>
+        </div>
+      </div>
+
+      <div class="clothingCards">
+        <img src="/assets/clothes/woman/2.webp" alt="">
+        <div class="clothingCards_div">
+          <p>BUZO CANGURO ONEILL</p>
+          <p>$19.350,00
+          </p>
+          <p>4 cuotas sin interés de $4.837,50</p>
+          <span>
+            <button class="clothingCards__button">AGREGAR AL CARRITO</button>
+            <button class="clothingCards__button">COMPRAR</button>
+          </span>
+        </div>
+      </div>
+
+      <div class="clothingCards">
+        <img src="/assets/clothes/woman/3.webp" alt="">
+        <div class="clothingCards_div">
+          <p>BUZO CANGURO BILLABONG</p>
+          <p>$18.499,00
+          </p>
+          <p>4 cuotas sin interés de $4.624,75</p>
+          <span>
+            <button class="clothingCards__button">AGREGAR AL CARRITO</button>
+            <button class="clothingCards__button">COMPRAR</button>
+          </span>
+        </div>
+      </div>
+
+      <div class="clothingCards">
+        <img src="/assets/clothes/woman/4.webp" alt="">
+        <div class="clothingCards_div">
+          <p>REMERA BILLABONG SUNSET</p>
+          <p>$12.999,00
+          </p>
+          <p>4 cuotas sin interés de $3.249,75</p>
+          <span>
+            <button class="clothingCards__button">AGREGAR AL CARRITO</button>
+            <button class="clothingCards__button">COMPRAR</button>
+          </span>
+        </div>
+      </div>
+
+      <div class="clothingCards">
+        <img src="/assets/clothes/woman/5.webp" alt="">
+        <div class="clothingCards_div">
+          <p>TOP PSY EN PUNTA</p>
+          <p>$6.200,00
+          </p>
+          <p>4 cuotas sin interés de $1.550,00</p>
+          <span>
+            <button class="clothingCards__button">AGREGAR AL CARRITO</button>
+            <button class="clothingCards__button">COMPRAR</button>
+          </span>
+        </div>
+      </div>
+
+      <div class="clothingCards">
+        <img src="/assets/clothes/woman/6.webp" alt="">
+        <div class="clothingCards_div">
+          <p>BUZO BASE CHAMPION BLANCO</p>
+          <p>
+            $21.249,00</p>
+          <p>4 cuotas sin interés de $5.312,25</p>
+          <span>
+            <button class="clothingCards__button">AGREGAR AL CARRITO</button>
+            <button class="clothingCards__button">COMPRAR</button>
+          </span>
+        </div>
+      </div>
+
+      <div class="clothingCards">
+        <img src="/assets/clothes/woman/7.webp" alt="">
+        <div class="clothingCards_div">
+          <p>CAMPERA DE NIEVE ONEILL </p>
+          <p>
+            $106.650,00
+          </p>
+          <p>4 cuotas sin interés de $26.662,50</p>
+          <span>
+            <button class="clothingCards__button">AGREGAR AL CARRITO</button>
+            <button class="clothingCards__button">COMPRAR</button>
+          </span>
+        </div>
+      </div>
+      
+      <a href="#">
+        <div class="clothingCards">
+          <img src="/assets/clothes/woman/8.webp" alt="">
+          <div class="clothingCards_div">
+            <p>BUZO CANGURO RUSTY</p>
+            <p>
+              $25.990,00
+            </p>
+            <p>4 cuotas sin interés de $6.497,50</p>
+            <span>
+              <button class="clothingCards__button">AGREGAR AL CARRITO</button>
+              <button class="clothingCards__button">COMPRAR</button>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#">
+        <div class="clothingCards">
+          <img src="/assets/clothes/woman/9.webp" alt="">
+          <div class="clothingCards_div">
+            <p>JEAN RIGIDO MOM FENIX</p>
+            <p>
+              $29.900,00
+</p>
+            <p>4 cuotas sin interés de $7.475,00</p>
+            <span>
+              <button class="clothingCards__button">AGREGAR AL CARRITO</button>
+              <button class="clothingCards__button">COMPRAR</button>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#">
+        <div class="clothingCards">
+          <img src="/assets/clothes/woman/10.webp" alt="">
+          <div class="clothingCards_div">
+            <p>PANTALON FANTASY RUSTY</p>
+            <p>
+              $27.790,00</p>
+            <p>4 cuotas sin interés de $6.947,50</p>
+            <span>
+              <button class="clothingCards__button">AGREGAR AL CARRITO</button>
+              <button class="clothingCards__button">COMPRAR</button>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#">
+        <div class="clothingCards">
+          <img src="/assets/clothes/woman/11.webp" alt="">
+          <div class="clothingCards_div">
+            <p>PANTALON GABARDINA PSYCHIC</p>
+            <p>
+              $18.600,00
+</p>
+            <p>4 cuotas sin interés de $4.650,00</p>
+            <span>
+              <button class="clothingCards__button">AGREGAR AL CARRITO</button>
+              <button class="clothingCards__button">COMPRAR</button>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#">
+        <div class="clothingCards">
+          <img src="/assets/clothes/woman/12.webp" alt="">
+          <div class="clothingCards_div">
+            <p>PANTALON FRIZA NEW BALANCE</p>
+            <p>$23.499,00</p>
+            <p>4 cuotas sin interés de $5.874,75</p>
+            <span>
+              <button class="clothingCards__button">AGREGAR AL CARRITO</button>
+              <button class="clothingCards__button">COMPRAR</button>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#">
+        <div class="clothingCards">
+          <img src="/assets/clothes/woman/13.webp" alt="">
+          <div class="clothingCards_div">
+            <p>BUZO PSY ANORAK CUERINA</p>
+            <p>$24.800,00
+            </p>
+            <p>4 cuotas sin interés de $6.200,00</p>
+            <span>
+              <button class="clothingCards__button">AGREGAR AL CARRITO</button>
+              <button class="clothingCards__button">COMPRAR</button>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#">
+        <div class="clothingCards">
+          <img src="/assets/clothes/woman/14.webp" alt="">
+          <div class="clothingCards_div">
+            <p>CAMPERA RUSTY DAILY PUFFER</p>
+            <p>$54.990,00</p>
+            <p>4 cuotas sin interés de $13.747,50</p>
+            <span>
+              <button class="clothingCards__button">AGREGAR AL CARRITO</button>
+              <button class="clothingCards__button">COMPRAR</button>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#">
+        <div class="clothingCards">
+          <img src="/assets/clothes/woman/15.jpg" alt="">
+          <div class="clothingCards_div">
+            <p>BUZO BASE NEVADO ROLLING STONE </p>
+            <p>$11.300,00</p>
+            <p>4 cuotas sin interés de $2.825,00</p>
+            <span>
+              <button class="clothingCards__button">AGREGAR AL CARRITO</button>
+              <button class="clothingCards__button">COMPRAR</button>
+            </span>
+          </div>
+        </div>
+      </a>
+
+
+      <a href="#">
+        <div class="clothingCards">
+          <img src="/assets/clothes/woman/16.jpg" alt="">
+          <div class="clothingCards_div">
+            <p>REMERON BASICA RED HOT</p>
+            <p>$3.500,00
+            </p>
+            <p>4 cuotas sin interés de $875,00</p>
+            <span>
+              <button class="clothingCards__button">AGREGAR AL CARRITO</button>
+              <button class="clothingCards__button">COMPRAR</button>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#">
+        <div class="clothingCards">
+          <img src="/assets/clothes/woman/17.webp" alt="">
+          <div class="clothingCards_div">
+            <p>REMERA LOVE MORLEY</p>
+            <p>$4.799,00</p>
+            <p>4 cuotas sin interés de $1.199,75</p>
+            <span>
+              <button class="clothingCards__button">AGREGAR AL CARRITO</button>
+              <button class="clothingCards__button">COMPRAR</button>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#">
+        <div class="clothingCards">
+          <img src="/assets/clothes/woman/18.webp" alt="">
+          <div class="clothingCards_div">
+            <p>BUZO BASE BILLABONG</p>
+            <p>$21.999,00</p>
+            <p>4 cuotas sin interés de $5.499,75</p>
+            <span>
+              <button class="clothingCards__button">AGREGAR AL CARRITO</button>
+              <button class="clothingCards__button">COMPRAR</button>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#">
+        <div class="clothingCards">
+          <img src="/assets/clothes/woman/19.webp" alt="">
+          <div class="clothingCards_div">
+            <p>TOP CLASICO MICROTUL</p>
+            <p>$4.300,00</p>
+            <p>4 cuotas sin interés de $1.075,00</p>
+            <span>
+              <button class="clothingCards__button">AGREGAR AL CARRITO</button>
+              <button class="clothingCards__button">COMPRAR</button>
+            </span>
+          </div>
+        </div>
+      </a>
+
+    </section>
+
+  </main>
+  <div class="paginationCards">
+    <button>
+      <<</button>
+        <button> 1</button>
+        <button> 2</button>
+        <button> 3</button>
+        <button> 4</button>
+        <button> 5</button>
+        <button> 6</button>
+        <button> 7</button>
+        <button> 8</button>
+        <button> 9</button>
+        <button> 10</button>
+        <button>...</button>
+        <button>>></button>
+  </div>
+  <section class="miCarrito">
+    <label for="cartInput" class="CartBtn">
+      <p class="text">CARRITO</p>
+      <span class="IconContainer">
+        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+          <path
+            d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+          </path>
+        </svg>
+      </span>
+    </label>
+
+    <input type="checkbox" name="" id="cartInput">
+    <div class="cartFocus">
+
+    </div>
+    <div class="cartContainer">
+      <div class="cartCards__Container">
+
+
+        <div class="cartCard">
+
+          <img src="/assets/clothes/man/13.jpg" alt="">
+          <div class="cartCard--text">
+            <p>BUZO FLEECE HOOD NEON</p>
+            <p>$31.000,00</p>
+
+            <div class="item-handler">
+              <span class="quantity-handler down">-</span>
+              <span class="item-quantity">1</span>
+              <span class="quantity-handler up">+</span>
+              <div class="trashIcon">
+                <i class="fa-solid fa-trash"></i>
+              </div>
+            </div>
+
+          </div>
+
+
+
+        </div>
+        <div class="cartCard">
+
+          <img src="/assets/clothes/man/13.jpg" alt="">
+          <div class="cartCard--text">
+            <p>BUZO FLEECE HOOD NEON</p>
+            <p>$31.000,00</p>
+
+            <div class="item-handler">
+              <span class="quantity-handler down">-</span>
+              <span class="item-quantity">1</span>
+              <span class="quantity-handler up">+</span>
+              <div class="trashIcon">
+                <i class="fa-solid fa-trash"></i>
+              </div>
+            </div>
+
+          </div>
+
+
+
+        </div>
+
+      </div>
+      <div class="cartTotal">
+        <h3>Resumen de Compra:</h3>
+        <hr>
+        <span>
+          <p>Total Productos:</p>
+          <p>2</p>
+        </span>
+        <span>
+          <p>Subtotal sin descuentos:</p>
+          <p>$ 99998</p>
+        </span>
+        <hr>
+        <span>
+          <h3>TOTAL:</h3>
+          <h3>$ 65998</h3>
+        </span>
+        <button class="clothingCards__button">TERMINAR COMPRA</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="whatsappIcon">
+    <a href="#">
+      <img src="/assets/wsp.png" alt="">
+    </a>
+  </section>
+
+  <footer class="footerSection">
+    <div>
+      <p>Copyright © PurpleSky - 2023 - todos los derechos reservados</p>
+      <p>Diseño by Malvada Papa </p>
+    </div>
+    <div class="footerSocialMedia">
+      <img src="/assets/footerAssets/facebook.png" alt="">
+      <img src="/assets/footerAssets/insta.jpg" alt="">
+      <img src="/assets/footerAssets/twitter.png" alt="">
+      <img src="/assets/footerAssets/youtube.png" alt="">
+
+    </div>
+  </footer>
+
+
+</body>
+
+</html>
