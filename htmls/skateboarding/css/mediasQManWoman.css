@@ -1,0 +1,28 @@
+@media (max-width: 710px){
+ 
+.clothingCards{
+     width: 200px;
+}
+.clothingCards_div p{
+    font-size: 11px;
+}
+.clothingCards__button{
+    font-size: 11px;
+}
+.paginationCards{
+    gap: 3px;
+}
+.paginationCards button{
+    height: 20px;
+    width: 20px;
+    font-size: 11px;
+}
+
+}
+
+@media (max-width: 550px){
+    .clothingCards{
+        width: 160px;
+   }
+
+}

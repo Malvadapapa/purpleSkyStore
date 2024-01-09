@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PurpleSky Hombre</title>
+  <!-- ESTILOS GENERALES -->
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/mediasQueries.css" />
+  <!-- ESTILOS ESPECIFICOS -->
+  <link rel="stylesheet" href="/htmls/man/css/clothingman.css" />
+  <link rel="stylesheet" href="/htmls/man/css/mediasQManWoman.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:wght@500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+
+<body>
+  <section class="discountSection">
+    <div class="discountContainer">
+      <p>¡ENVIOS A TODO EL PAIS!</p>
+      <p>¡ENVIO EXPRESS GRATIS A PARTIR DE LOS $20.000!</p>
+      <p>¡HASTA 3 CUOTAS SIN INTERES!</p>
+      <p>¡ENVIO GRATIS A PARTIR DE $10.000!</p>
+    </div>
+  </section>
+  <header class="headerSection">
+    <a href="/index.html">
+      <img src="/assets/headerAssets/logoHeader.svg" alt="" /></a>
+
+    <nav class="navContainer">
+      <label for="burgerMenu">
+        <img src="/assets/headerAssets/exitBurger.svg" alt="" id="exitBurger" />
+      </label>
+
+      <ul>
+        <li><a href="/index.html">VOLVER AL INICIO </a></li>
+        <li><a href="/htmls/woman/clothingWoman.html">MUJER</a></li>
+        <li><a href="/htmls/skateboarding/skateboarding.html">SKATEBOARDING</a></li>
+        <li><a href="/htmls/shoes/shoes.html">CALZADOS</a></li>
+        <li><a href="#" id="hotSale">¡ HOTSALE !</a></li>
+      </ul>
+    </nav>
+    <div class="headerSection--loggin-register">
+      <nav class="burger--loggin-register">
+        <ul>
+          <li><a href="/htmls/loggin.html">INICIAR SESION!</a></li>
+          <li><a href="#">¡REGISTRARSE!</a></li>
+        </ul>
+
+        <label for="burgerMenu" class="burgerMenu__icon" id="burgerOpener">
+          <img src="/assets/headerAssets/burgerMenu.svg" alt="" />
+        </label>
+
+      </nav>
+      <a href="/htmls/loggin.html">
+        <div data-tooltip="¡INICIAR SESION!" data-flow="bottom" class="loggin-register">
+          <img src="/assets/headerAssets/logginIcon.svg" alt="" />
+        </div>
+      </a>
+      <div data-tooltip="No estas registrado? ¡Registrate!" data-flow="bottom" class="loggin-register">
+        <img src="/assets/headerAssets/registerIcon.svg" alt="" />
+      </div>
+    </div>
+  </header>
+  <section class="bannerSection">
+    <a href="#">
+      <img src="/assets/banners/bannerRipCurl.jpg" alt="">
+    </a>
+  </section>
+  <main class="mainSection">
+    <aside class="assideSection">
+      <input type="checkbox" name="" id="assideMenu" />
+      <div class="dropdownMenu">
+        <ul>
+
+          <li class="dropdownMenu-Selectors">
+            <p>Ingrese rango de precio</p>
+          </li>
+
+          <span class="dropdownMenu-Selectors__priceRange">
+            <input type="number" name="" id="minPrice" placeholder="Minimo"> -
+            <input type="number" name="" id="maxPrice" placeholder="Maximo"></span>
+
+
+          <li class="dropdownMenu-Selectors">
+            <label for="typeFilter">Selecciona un tipo:</label>
+          </li>
+          <select id="typeFilter">
+            <option value="all">Todas las prendas</option>
+          </select>
+          <li class="dropdownMenu-Selectors">
+            <label for="colorFilter">Selecciona un color:</label>
+          </li>
+          <select id="colorFilter">
+
+          </select>
+        </ul>
+
+        <button id="applyFilters">Aplicar Filtros</button>
+        <button id="removeFilters">Quitar Filtros</button>
+      </div>
+
+      <label for="assideMenu" class="toggleAsside">
+        <h2 class="">FILTROS </h2>
+        <i class="fas fa-tshirt tshirt"></i> 
+      </label>
+    </aside>
+
+    <section class="cardsSection" id="cardRenderContainer">
+
+    </section>
+
+  </main>
+  <div class="paginationCards">
+
+    <button id="prevPaginationButton" class="paginationButtonPrevius"> Anterior </button>
+
+        <button id="nextPaginationButton" class="paginationButton"> Próxima </button>
+  </div>
+
+  <section class="miCarrito">
+    <label for="cartInput" class="CartBtn">
+      <p class="text">CART</p>
+      <span id="cuantityCartBuble" class="cuantityCart ">3</span>
+      <span class="IconContainer">
+        <i class="fas fa-shopping-cart"></i>
+      </span>
+    </label>
+
+
+    <div class="cartFocus">
+
+    </div>
+    <div class="cartContainer" id="cartMainContainer">
+      <div class="cartCards__Container">
+
+
+
+        <!-- CARDS QUE PERTENECEN AL CARRITO -->
+        <!-- 
+
+        <div class="cartCard">
+
+          <img src="/assets/clothes/man/13.jpg" alt="">
+          <div class="cartCard--text">
+            <p>BUZO FLEECE HOOD NEON</p>
+            <p>$31.000,00</p>
+
+            <div class="item-handler">
+              <span class="quantity-handler down">-</span>
+              <span class="item-quantity">1</span>
+              <span class="quantity-handler up">+</span>
+              <div class="trashIcon">
+                <i class="fa-solid fa-trash"></i>
+              </div>
+            </div>
+
+          </div>
+        </div>
+ -->
+
+
+      </div>
+
+      <div class="cartTotal">
+        <h3>Resumen de Compra:</h3>
+        <hr>
+        <span>
+          <p>Cantidad de productos en total:</p>
+          <p id="cartLength">---</p>
+        </span>
+ 
+        <hr>
+        <span>
+          <h3>TOTAL:</h3>
+          <h3 id="showCartTotal">---</h3>
+        </span>
+        <button class="clothingCards__button" id="emptyCart">VACIAR CARRITO</button>
+        <button class="clothingCards__button" id="completePurchase">TERMINAR COMPRA</button>
+      </div>
+    </div>
+  </section>
+  <section class="whatsappIcon">
+    <a href="#">
+      <img src="/assets/wsp.png" alt="">
+    </a>
+  </section>
+
+  <footer class="footerSection">
+    <div>
+      <p>Copyright © PurpleSky - 2023 - todos los derechos reservados</p>
+      <p>Diseño by Malvada Papa </p>
+    </div>
+    <div class="footerSocialMedia">
+      <img src="/assets/footerAssets/facebook.png" alt="">
+      <img src="/assets/footerAssets/insta.jpg" alt="">
+      <img src="/assets/footerAssets/twitter.png" alt="">
+      <img src="/assets/footerAssets/youtube.png" alt="">
+
+    </div>
+  </footer>
+ 
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script type="module" src="/htmls/man/clothingman.js"></script>
+</body>
+
+</html>
