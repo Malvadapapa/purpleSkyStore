@@ -50,7 +50,7 @@ const OPEN_BURGER = () => {
 const CLOSE_BURGER = () => {
   $burgerContainer.classList.toggle("navContainerActive");
 };
-
+ 
 ///////////////////////PAGINADO///////////////////////
 
 const DIVIDE_PRODUCTS_PAGINATION = (size, data) => {
@@ -85,7 +85,7 @@ const BEFORE_RENDERING = (data) => {
     <h3>No se encontro ropa con dichas caracteristicas</h3>
      `);
   }
-  if (appState.isThereAnyFilter) {
+if (appState.isThereAnyFilter) {
     if (appState.currentFilteredProductsIndex !== 0) {
       $paginationNext.classList.remove("paginationButtonDissabled");
       $paginationPrev.classList.remove("paginationButtonDissabled");
@@ -236,12 +236,12 @@ const UPDATE_COLOR_FILTERS = () => {
 
   if (typeValue !== "all") {
     let filteredProducts = FILTER_BY_TYPE(productsToFilter);
-
+    
     let allColors = filteredProducts.flatMap((obj) => obj.color);
     //set es una estructura de datos que solo admite datos unicos
     const colors = [...new Set(allColors)];
     RENDER_COLOR_FILTERS(colors);
-    return;
+        return;
   } else {
     AVAIBLE_COLORS();
   }
@@ -260,7 +260,7 @@ const APPLY_FILTERS = () => {
   if ($colorSelectInput.value !== "all") {
     filteredProducts = FILTER_BY_COLOR(filteredProducts);
   }
-
+  
   appState.isThereAnyFilter = true;
   /*   RENDER_PRODUCTS(filteredProducts);
   console.log(appState.isThereAnyFilter) */
@@ -309,7 +309,7 @@ const SHOW_LESS_PRODUCTS = () => {
   appState.currentProductsIndex -= 1;
 
   RENDER_PRODUCTS(appState.products[appState.currentProductsIndex]);
-};
+  };
 
 const SHOW_MORE_PRODUCTS = () => {
   if (appState.isThereAnyFilter) {
@@ -327,9 +327,9 @@ const SHOW_MORE_PRODUCTS = () => {
   if (appState.currentProductsIndex >= paginationLimit - 1) {
     return;
   }
-  appState.currentProductsIndex += 1;
-  RENDER_PRODUCTS(appState.products[appState.currentProductsIndex]);
-};
+    appState.currentProductsIndex += 1;
+    RENDER_PRODUCTS(appState.products[appState.currentProductsIndex]);
+  };
 
 ///////////////////////FUNCIONES QUE MANEJAN LA APERTURA Y CIERRE DEL CARRITO///////////////////////
 const OPEN_CART = () => {
@@ -382,7 +382,7 @@ const RENDER_CART = () => {
   if (!cart.length) {
     return ($cart.innerHTML = `<p>No hay productos en el carrito</p>`);
   } else {
-    SHOW_CART_TOTAL();
+SHOW_CART_TOTAL();
     DISABLE_CART_BUTTON($emptyCartBtn);
     DISABLE_CART_BUTTON($finishPurchase);
     $updateBubleQuantity.classList.add("hasCartCuantity");
@@ -390,7 +390,7 @@ const RENDER_CART = () => {
     CART_CUANTITY($updateBubleQuantity);
     CART_CUANTITY($cartTotalCuantity);
     $cart.innerHTML = cart.map(createProductTemplate).join("");
-    SAVE_CART()
+  SAVE_CART()
   }
 };
 
@@ -587,7 +587,7 @@ const init = () => {
   RENDER_TYPES_FILTER();
 
   $applyFilters.addEventListener("click", APPLY_FILTERS);
-  $removeFilters.addEventListener("click", REMOVE_FILTERS);
+$removeFilters.addEventListener("click", REMOVE_FILTERS);
 
   $typeSelectInput.addEventListener("change", UPDATE_COLOR_FILTERS);
 
