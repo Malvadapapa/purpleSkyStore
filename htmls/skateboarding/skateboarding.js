@@ -63,16 +63,19 @@ const DIVIDE_PRODUCTS_PAGINATION = (size, data) => {
 };
 
 ///////////////////////APPSTATE///////////////////////
-
+const productOrigin = "skateboarding";
 const appState = {
-  products: DIVIDE_PRODUCTS_PAGINATION(6, productsData.skateboarding),
+  products: DIVIDE_PRODUCTS_PAGINATION(6, productsData[productOrigin]),
   currentProductsIndex: 0,
-  productsLength: DIVIDE_PRODUCTS_PAGINATION(6, productsData.skateboarding).length,
-  isThereAnyFilter: false,
-  filteredProducts: DIVIDE_PRODUCTS_PAGINATION(6, productsData.skateboarding),
-  currentFilteredProductsIndex: 0,
-  filteredProductsLength: DIVIDE_PRODUCTS_PAGINATION(6, productsData.skateboarding)
+  productsLength: DIVIDE_PRODUCTS_PAGINATION(6, productsData[productOrigin])
     .length,
+  isThereAnyFilter: false,
+  filteredProducts: DIVIDE_PRODUCTS_PAGINATION(6, productsData[productOrigin]),
+  currentFilteredProductsIndex: 0,
+  filteredProductsLength: DIVIDE_PRODUCTS_PAGINATION(
+    6,
+    productsData[productOrigin]
+  ).length,
 };
 
 const paginationLimit = appState.products.length;
@@ -135,9 +138,9 @@ const RENDER_PRODUCTS = (data) => {
            <button class="clothingCards__button" 
            data-id="${id}"
         data-description="${description}" data-price="${price}" data-img="${img[0]}">AGREGAR AL CARRITO</button>
-     <a href="#" class="seeMore_btn"> 
-      VER MAS 
-      </a>    
+        <a href="../renderSeeMore/renderSeeMore.html?id=${id}&category=${productOrigin}" class="seeMore_btn"> 
+        VER MAS 
+        </a>     
            
          </span>
        </div>

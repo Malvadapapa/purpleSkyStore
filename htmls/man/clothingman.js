@@ -50,7 +50,7 @@ const OPEN_BURGER = () => {
 const CLOSE_BURGER = () => {
   $burgerContainer.classList.toggle("navContainerActive");
 };
- 
+
 ///////////////////////PAGINADO///////////////////////
 
 const DIVIDE_PRODUCTS_PAGINATION = (size, data) => {
@@ -63,16 +63,19 @@ const DIVIDE_PRODUCTS_PAGINATION = (size, data) => {
 };
 
 ///////////////////////APPSTATE///////////////////////
-
+const productOrigin = "man";
 const appState = {
-  products: DIVIDE_PRODUCTS_PAGINATION(6, productsData.man),
+  products: DIVIDE_PRODUCTS_PAGINATION(6, productsData[productOrigin]),
   currentProductsIndex: 0,
-  productsLength: DIVIDE_PRODUCTS_PAGINATION(6, productsData.man).length,
-  isThereAnyFilter: false,
-  filteredProducts: DIVIDE_PRODUCTS_PAGINATION(6, productsData.man),
-  currentFilteredProductsIndex: 0,
-  filteredProductsLength: DIVIDE_PRODUCTS_PAGINATION(6, productsData.man)
+  productsLength: DIVIDE_PRODUCTS_PAGINATION(6, productsData[productOrigin])
     .length,
+  isThereAnyFilter: false,
+  filteredProducts: DIVIDE_PRODUCTS_PAGINATION(6, productsData[productOrigin]),
+  currentFilteredProductsIndex: 0,
+  filteredProductsLength: DIVIDE_PRODUCTS_PAGINATION(
+    6,
+    productsData[productOrigin]
+  ).length,
 };
 
 const paginationLimit = appState.products.length;
@@ -85,7 +88,7 @@ const BEFORE_RENDERING = (data) => {
     <h3>No se encontro ropa con dichas caracteristicas</h3>
      `);
   }
-if (appState.isThereAnyFilter) {
+  if (appState.isThereAnyFilter) {
     if (appState.currentFilteredProductsIndex !== 0) {
       $paginationNext.classList.remove("paginationButtonDissabled");
       $paginationPrev.classList.remove("paginationButtonDissabled");
@@ -135,7 +138,7 @@ const RENDER_PRODUCTS = (data) => {
            <button class="clothingCards__button" 
            data-id="${id}"
         data-description="${description}" data-price="${price}" data-img="${img[0]}">AGREGAR AL CARRITO</button>
-     <a href="#" class="seeMore_btn"> 
+     <a href="../renderSeeMore/renderSeeMore.html?id=${id}&category=${productOrigin}" class="seeMore_btn"> 
       VER MAS 
       </a>    
            
@@ -236,12 +239,12 @@ const UPDATE_COLOR_FILTERS = () => {
 
   if (typeValue !== "all") {
     let filteredProducts = FILTER_BY_TYPE(productsToFilter);
-    
+
     let allColors = filteredProducts.flatMap((obj) => obj.color);
     //set es una estructura de datos que solo admite datos unicos
     const colors = [...new Set(allColors)];
     RENDER_COLOR_FILTERS(colors);
-        return;
+    return;
   } else {
     AVAIBLE_COLORS();
   }
@@ -260,7 +263,7 @@ const APPLY_FILTERS = () => {
   if ($colorSelectInput.value !== "all") {
     filteredProducts = FILTER_BY_COLOR(filteredProducts);
   }
-  
+
   appState.isThereAnyFilter = true;
   /*   RENDER_PRODUCTS(filteredProducts);
   console.log(appState.isThereAnyFilter) */
@@ -309,7 +312,7 @@ const SHOW_LESS_PRODUCTS = () => {
   appState.currentProductsIndex -= 1;
 
   RENDER_PRODUCTS(appState.products[appState.currentProductsIndex]);
-  };
+};
 
 const SHOW_MORE_PRODUCTS = () => {
   if (appState.isThereAnyFilter) {
@@ -327,9 +330,9 @@ const SHOW_MORE_PRODUCTS = () => {
   if (appState.currentProductsIndex >= paginationLimit - 1) {
     return;
   }
-    appState.currentProductsIndex += 1;
-    RENDER_PRODUCTS(appState.products[appState.currentProductsIndex]);
-  };
+  appState.currentProductsIndex += 1;
+  RENDER_PRODUCTS(appState.products[appState.currentProductsIndex]);
+};
 
 ///////////////////////FUNCIONES QUE MANEJAN LA APERTURA Y CIERRE DEL CARRITO///////////////////////
 const OPEN_CART = () => {
@@ -346,12 +349,11 @@ const CLOSE_BURGER_IF_OUTSIDE = (e) => {
   }
 };
 
-let cart = JSON.parse(localStorage.getItem('cart')) || []
-
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const SAVE_CART = () => {
-  localStorage.setItem('cart', JSON.stringify(cart))
-}
+  localStorage.setItem("cart", JSON.stringify(cart));
+};
 
 const createProductTemplate = (cartProduct) => {
   const { price, id, img, description, quantity } = cartProduct;
@@ -382,7 +384,7 @@ const RENDER_CART = () => {
   if (!cart.length) {
     return ($cart.innerHTML = `<p>No hay productos en el carrito</p>`);
   } else {
-SHOW_CART_TOTAL();
+    SHOW_CART_TOTAL();
     DISABLE_CART_BUTTON($emptyCartBtn);
     DISABLE_CART_BUTTON($finishPurchase);
     $updateBubleQuantity.classList.add("hasCartCuantity");
@@ -390,7 +392,7 @@ SHOW_CART_TOTAL();
     CART_CUANTITY($updateBubleQuantity);
     CART_CUANTITY($cartTotalCuantity);
     $cart.innerHTML = cart.map(createProductTemplate).join("");
-  SAVE_CART()
+    SAVE_CART();
   }
 };
 
@@ -542,12 +544,12 @@ const CLEAN_CART = () => {
   $carAnimatedIcon.classList.remove("replaceAnimatedIcon");
   $cartTotalCuantity.innerHTML = `---`;
   $showCartPrice.innerHTML = `---`;
-  SAVE_CART()
+  SAVE_CART();
   RENDER_CART();
 };
 const EMPTY_CART = () => {
   if (!cart.length) {
-    return
+    return;
   }
   if (
     window.confirm("¿Estas seguro que deseas vaciar el carrito de compras?")
@@ -560,13 +562,15 @@ const EMPTY_CART = () => {
 
 const BUY_CART = () => {
   if (!cart.length) {
-    return
+    return;
   }
   if (window.confirm("¿Estas seguro que deseas realizar la compra?")) {
     CLEAN_CART();
-    alert('¡Compra realizada con exito!, te llevaremos nuevamente al inicio =)')
+    alert(
+      "¡Compra realizada con exito!, te llevaremos nuevamente al inicio =)"
+    );
     setTimeout(() => {
-      window.location.href = '/index.html'
+      window.location.href = "/index.html";
     }, 1000);
   } else {
     return;
@@ -587,7 +591,7 @@ const init = () => {
   RENDER_TYPES_FILTER();
 
   $applyFilters.addEventListener("click", APPLY_FILTERS);
-$removeFilters.addEventListener("click", REMOVE_FILTERS);
+  $removeFilters.addEventListener("click", REMOVE_FILTERS);
 
   $typeSelectInput.addEventListener("change", UPDATE_COLOR_FILTERS);
 

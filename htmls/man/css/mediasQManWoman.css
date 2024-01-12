@@ -1,28 +1,97 @@
-@media (max-width: 710px){
+@media (max-width: 1200px){
+    .selectedProductSection{
+        height: auto;
+    }
+    .productDescription h2 {
+        font-size: 25px;
+        padding-bottom: 10px;
+      }
+      .discountDescription {
+        font-size: 15px;
+      }
+      .descriptionPrice {
+        font-size: 25px;
+      }
+      .productDescription select {
+        font-size: 15px;
+        padding: 0;
+      }
+      .mySwiper2 {
+        height: 60%;
+        width: 100%;
+      }
+      
+      .mySwiper {
+        height: 20%;
+        box-sizing: border-box;
+        padding: 10px 0;
+        
+}
  
-.clothingCards{
-     width: 200px;
+.suggestedProducts {
+    margin-top: 100px;
+  }
+
 }
-.clothingCards_div p{
+@media (max-width: 800px) {
+  .videoBanner {
+    display: none;
+  }
+  .selectedProductSection {
+    margin-top: 50px;
+    padding: 15px;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  .productSlider {
+    width: 100%;
+  }
+
+  .productDescription {
+    padding: 5px;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+
+
+  .suggestedProducts-cardContainer {
+    flex-wrap: wrap;
+  }
+  .mySwiper2 {
+    height: 80%;
+    width: 100%;
+  }
+  
+}
+
+@media (max-width: 710px) {
+  .clothingCards {
+    width: 200px;
+  }
+  .clothingCards_div p {
     font-size: 11px;
-}
-.clothingCards__button{
+  }
+  .clothingCards__button {
     font-size: 11px;
-}
-.paginationCards{
+  }
+  .paginationCards {
     gap: 3px;
-}
-.paginationCards button{
+  }
+  .paginationCards button {
     height: 20px;
     width: 20px;
     font-size: 11px;
+  }
 }
 
+@media (max-width: 550px) {
+  .clothingCards {
+    width: 160px;
+  }
+ 
 }
-
-@media (max-width: 550px){
-    .clothingCards{
-        width: 160px;
-   }
-
-}
+ 

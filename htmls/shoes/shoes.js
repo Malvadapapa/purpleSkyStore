@@ -63,18 +63,20 @@ const DIVIDE_PRODUCTS_PAGINATION = (size, data) => {
 };
 
 ///////////////////////APPSTATE///////////////////////
-
+const productOrigin = "shoes";
 const appState = {
-  products: DIVIDE_PRODUCTS_PAGINATION(6, productsData.shoes),
+  products: DIVIDE_PRODUCTS_PAGINATION(6, productsData[productOrigin]),
   currentProductsIndex: 0,
-  productsLength: DIVIDE_PRODUCTS_PAGINATION(6, productsData.shoes).length,
-  isThereAnyFilter: false,
-  filteredProducts: DIVIDE_PRODUCTS_PAGINATION(6, productsData.shoes),
-  currentFilteredProductsIndex: 0,
-  filteredProductsLength: DIVIDE_PRODUCTS_PAGINATION(6, productsData.shoes)
+  productsLength: DIVIDE_PRODUCTS_PAGINATION(6, productsData[productOrigin])
     .length,
+  isThereAnyFilter: false,
+  filteredProducts: DIVIDE_PRODUCTS_PAGINATION(6, productsData[productOrigin]),
+  currentFilteredProductsIndex: 0,
+  filteredProductsLength: DIVIDE_PRODUCTS_PAGINATION(
+    6,
+    productsData[productOrigin]
+  ).length,
 };
-
 const paginationLimit = appState.products.length;
 let filteredPaginationLimit = appState.filteredProducts.length;
 ///////////////////////RENDERIZADO DE PRODUCTOS///////////////////////
@@ -135,10 +137,9 @@ const RENDER_PRODUCTS = (data) => {
            <button class="clothingCards__button" 
            data-id="${id}"
         data-description="${description}" data-price="${price}" data-img="${img[0]}">AGREGAR AL CARRITO</button>
-     <a href="#" class="seeMore_btn"> 
-      VER MAS 
-      </a>    
-           
+        <a href="../renderSeeMore/renderSeeMore.html?id=${id}&category=${productOrigin}" class="seeMore_btn"> 
+        VER MAS 
+        </a>  
          </span>
        </div>
      </div>
@@ -345,12 +346,11 @@ const CLOSE_BURGER_IF_OUTSIDE = (e) => {
     $burgerContainer.classList.toggle("navContainerActive");
   }
 };
-let cart = JSON.parse(localStorage.getItem('cart')) || []
-
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const SAVE_CART = () => {
-  localStorage.setItem('cart', JSON.stringify(cart))
-}
+  localStorage.setItem("cart", JSON.stringify(cart));
+};
 const createProductTemplate = (cartProduct) => {
   const { price, id, img, description, quantity } = cartProduct;
 
@@ -388,7 +388,7 @@ const RENDER_CART = () => {
     CART_CUANTITY($updateBubleQuantity);
     CART_CUANTITY($cartTotalCuantity);
     $cart.innerHTML = cart.map(createProductTemplate).join("");
-    SAVE_CART()
+    SAVE_CART();
   }
 };
 
@@ -540,12 +540,12 @@ const CLEAN_CART = () => {
   $carAnimatedIcon.classList.remove("replaceAnimatedIcon");
   $cartTotalCuantity.innerHTML = `---`;
   $showCartPrice.innerHTML = `---`;
-  SAVE_CART()
+  SAVE_CART();
   RENDER_CART();
 };
 const EMPTY_CART = () => {
   if (!cart.length) {
-    return
+    return;
   }
   if (
     window.confirm("¿Estas seguro que deseas vaciar el carrito de compras?")
@@ -558,13 +558,15 @@ const EMPTY_CART = () => {
 
 const BUY_CART = () => {
   if (!cart.length) {
-    return
+    return;
   }
   if (window.confirm("¿Estas seguro que deseas realizar la compra?")) {
     CLEAN_CART();
-    alert('¡Compra realizada con exito!, te llevaremos nuevamente al inicio =)')
+    alert(
+      "¡Compra realizada con exito!, te llevaremos nuevamente al inicio =)"
+    );
     setTimeout(() => {
-      window.location.href = '/index.html'
+      window.location.href = "/index.html";
     }, 1000);
   } else {
     return;

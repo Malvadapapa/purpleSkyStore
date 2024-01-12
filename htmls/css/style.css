@@ -691,7 +691,7 @@ html {
   justify-content: flex-start;
   width: 280px;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
   flex-direction: column;
   transition: var(--transitions);
@@ -951,6 +951,7 @@ display: block;
 
 
 .cartContainer {
+  margin-top: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
