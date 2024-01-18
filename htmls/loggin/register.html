@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/htmls/css/style.css" />
+  <link rel="stylesheet" href="/htmls/css/mediasQueries.css" />
+  <link rel="stylesheet" href="/htmls/man/css/clothingman.css" />
+
+  <link rel="stylesheet" href="/htmls/man/css/mediasQManWoman.css">
+  <link rel="stylesheet" href="/htmls/loggin/css/loggin.css">
+  <link rel="stylesheet" href="/htmls/loggin/css/logginMediasquerys.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:wght@500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+  <div class="headerWraper">
+    <section class="discountSection">
+      <div class="discountContainer">
+        <p>¡ENVIOS A TODO EL PAIS!</p>
+        <p>¡ENVIO EXPRESS GRATIS A PARTIR DE LOS $20.000!</p>
+        <p>¡HASTA 3 CUOTAS SIN INTERES!</p>
+        <p>¡ENVIO GRATIS A PARTIR DE $10.000!</p>
+      </div>
+    </section>
+    <header class="headerSection">
+      <a href="#">
+        <img src="/assets/headerAssets/logoHeader.svg" alt="" /></a>
+
+      <nav class="navContainer">
+        <label for="burgerMenu">
+          <img src="/assets/headerAssets/exitBurger.svg" alt="" id="exitBurger" />
+        </label>
+
+        <ul>
+          <li><a href="/index.html">VOLVER AL INICIO </a></li>
+          <li><a href="/htmls/man/clothingman.html">HOMBRE</a></li>
+          <li><a href="/htmls/woman/clothingwoman.html">MUJER</a></li>
+          <li><a href="/htmls/skateboarding/skateboarding.html">SKATEBOARDING</a></li>
+          <li><a href="/htmls/shoes/shoes.html">CALZADOS</a></li>
+          <li><a href="#" id="hotSale">¡ HOTSALE !</a></li>
+        </ul>
+      </nav>
+      <div class="headerSection--loggin-register">
+        <nav class="burger--loggin-register">
+          <ul>
+            <li><a href="/index.html">INICIO</a></li>
+            <li><a href="#">¡INICIAR SESION!</a></li>
+          </ul>
+          <label for="burgerMenu">
+            <img src="/assets/headerAssets/burgerMenu.svg" alt="" />
+          </label>
+        </nav>
+
+        <div data-tooltip="No estas registrado? ¡Registrate!" data-flow="bottom" class="loggin-register">
+          <img src="/assets/headerAssets/registerIcon.svg" alt="" />
+        </div>
+      </div>
+    </header>
+
+  </div>
+
+
+  <main>
+    <!-- <section class="logginSection">
+  <div class="logginContainer">
+
+    <form class="logginForm" >
+      <h4>¡Bienvenido!</h4>
+      <h5>Inicia sesion para ver contenido exclusivo</h5>
+      <input type="text" name="email" placeholder="Email" autocomplete="off" />
+      <input type="password" name="password" placeholder="Passsword" id="pwd" autocomplete="off" />
+      <a href="#" class="forgetpass">Olvidaste la Contraseña?</a>
+       
+      <button class="clothingCards__button">Iniciar Sesion</button>
+    </form>
+    <hr>
+    <h5>O inicia sesion con tus redes:</h5>
+   
+        <button class="logginWhitSocial">
+              <img src="/assets/logginAssets/google.png" alt="">
+        <p>Inicia sesión con Google</p>   
+        </button>
+   
+ 
+ 
+        <button class="logginWhitSocial">
+            <img src="/assets/logginAssets/facebook.png" alt="">
+        <p>Inicia sesión con facebook  </p>
+        </button>
+      
+ 
+</div>
+
+</section> -->
+
+    <section class="registerSection">
+      <div class="registerContainer">
+
+        <form class="registerForm" id="regForm">
+          <h4>¡Bienvenido!</h4>
+          <h5>¡Registrate para obtener una mejor experiencia!</h5>
+          <input type="text" name="username" id="username" placeholder="Elige nombre de Usuario">
+          <small></small>
+          <input type="text" name="email" placeholder="Email" autocomplete="off" id="email" />
+          <small></small>
+          <input type="password" name="password" placeholder="Passsword" id="password" autocomplete="off" />
+          <small></small>
+          <input type="password" name="password" placeholder="Repite la Passsword" id="repeatPasword"
+            autocomplete="off" />
+          <small></small>
+          <hr>
+          <div class="terms">
+            <input type="checkbox" name="terms" id="terms">
+
+            <label for="terms">Estoy de acuerdo con los terminos y condiciones</label>
+
+          </div>
+          <small id="termsSmall"></small>
+          <button class="clothingCards__button" type="submit">Registrarse!</button>
+        </form>
+
+
+
+      </div>
+
+
+      <section class="whatsappIcon" data-tooltip="Whatsappeanos ; )" data-flow="left">
+        <a href="#">
+          <img src="/assets/wsp.png" alt="">
+        </a>
+      </section>
+
+    </section>
+
+  </main>
+
+
+  <section class="loggin">
+    <div class="logginContainer">
+      <video src="/assets/logginAssets/logginVideo.mp4" autoplay muted loop></video>
+      <form class="logginForm">
+        <i class="fa-solid fa-xmark"></i>
+        <h4>¡HOLA!</h4>
+        <h5>¡Que bueno tenerte de vuelta!</h5>
+        <input type="text" name="username" id="logginUsername" placeholder="Ingresa tu Usuario" autocomplete="off">
+        <small></small>
+        <input type="password" name="password" placeholder="Passsword" id="logginPassword" autocomplete="off" />
+        <small></small>
+        <hr>
+        <a href="/htmls/loggin/register.html">
+          <h5>¡¿No estas registrado?! Hacelo, amigo</h5>
+        </a>
+
+        <button class="clothingCards__button" type="submit">Iniciar Sesion</button>
+      </form>
+
+    </div>
+
+  </section>
+
+
+
+  <footer class="footerSection">
+    <div>
+      <p>Copyright © PurpleSky - 2023 - todos los derechos reservados</p>
+      <p>Diseño by Malvada Papa </p>
+    </div>
+    <div class="footerSocialMedia">
+      <img src="/assets/footerAssets/facebook.png" alt="">
+      <img src="/assets/footerAssets/insta.jpg" alt="">
+      <img src="/assets/footerAssets/twitter.png" alt="">
+      <img src="/assets/footerAssets/youtube.png" alt="">
+
+    </div>
+  </footer>
+
+  <script type="module" src="/htmls/loggin/register.js"></script>
+</body>
+
+</html>

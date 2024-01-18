@@ -54,8 +54,8 @@
     <div class="headerSection--loggin-register">
       <nav class="burger--loggin-register">
         <ul>
-          <li><a href="/htmls/loggin/loggin.html">INICIAR SESION!</a></li>
-          <li><a href="#">¡REGISTRARSE!</a></li>
+          <li><a href="#">INICIAR SESION!</a></li>
+          <li><a href="/htmls/loggin/register.html">¡REGISTRARSE!</a></li>
         </ul>
 
         <label for="burgerMenu" class="burgerMenu__icon" id="burgerOpener">
@@ -63,14 +63,16 @@
         </label>
 
       </nav>
-      <a href="/htmls/loggin/loggin.html">
-        <div data-tooltip="¡INICIAR SESION!" data-flow="bottom" class="loggin-register">
-          <img src="/assets/headerAssets/logginIcon.svg" alt="" />
+
+      <div data-tooltip="¡INICIAR SESION!" data-flow="bottom" class="loggin-register">
+        <img src="/assets/headerAssets/logginIcon.svg" alt="" />
+      </div>
+      <a href="/htmls/loggin/register.html">
+        <div data-tooltip="No estas registrado? ¡Registrate!" data-flow="bottom" class="loggin-register">
+          <img src="/assets/headerAssets/registerIcon.svg" alt="" />
         </div>
       </a>
-      <div data-tooltip="No estas registrado? ¡Registrate!" data-flow="bottom" class="loggin-register">
-        <img src="/assets/headerAssets/registerIcon.svg" alt="" />
-      </div>
+      
     </div>
   </header>
   <section class="bannerSection">
@@ -113,7 +115,7 @@
 
       <label for="assideMenu" class="toggleAsside">
         <h2 class="">FILTROS </h2>
-        <i class="fas fa-tshirt tshirt"></i> 
+        <i class="fas fa-tshirt tshirt"></i>
       </label>
     </aside>
 
@@ -126,7 +128,7 @@
 
     <button id="prevPaginationButton" class="paginationButtonPrevius"> Anterior </button>
 
-        <button id="nextPaginationButton" class="paginationButton"> Próxima </button>
+    <button id="nextPaginationButton" class="paginationButton"> Próxima </button>
   </div>
 
   <section class="miCarrito">
@@ -180,7 +182,7 @@
           <p>Cantidad de productos en total:</p>
           <p id="cartLength">---</p>
         </span>
- 
+
         <hr>
         <span>
           <h3>TOTAL:</h3>
@@ -191,7 +193,8 @@
       </div>
     </div>
   </section>
-  <section class="whatsappIcon">
+  
+  <section class="whatsappIcon" data-tooltip="Whatsappeanos ; )" data-flow="left">
     <a href="#">
       <img src="/assets/wsp.png" alt="">
     </a>
@@ -210,7 +213,7 @@
 
     </div>
   </footer>
- 
+
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script type="module" src="/htmls/man/clothingman.js"></script>
 </body>

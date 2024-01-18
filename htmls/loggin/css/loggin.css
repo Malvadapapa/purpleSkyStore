@@ -1,31 +1,15 @@
- 
-.backgroundSection {
+body {
+  background-image: url(/assets/logginAssets/videoReplacement.webp);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-  padding-bottom: 20.25%;
-
- 
+  flex-direction: column;
+  justify-content: space-between;
 }
-.backgroundSection div{
-  width: 100%;
-  height: 200vh;
 
-  backdrop-filter: blur(5px);
-  position: absolute;
-  z-index: 5;
-}
-.backgroundSection video {
-  position: absolute;
-  top: 0;
-
-}
-.logginSection {
-  position: absolute;
-  top: 90px;
+.registerSection {
   width: 100%;
   height: 100%;
   padding: 30px;
@@ -33,10 +17,9 @@
   justify-content: center;
   align-items: center;
   z-index: 7;
-
 }
 
-.logginContainer {
+.registerContainer {
   background-color: var(--blackColor);
   color: var(--whiteColor);
   border: 2px solid rgb(0, 0, 0);
@@ -49,19 +32,177 @@
   border-radius: 5px;
   gap: 10px;
 }
-.logginContainer a {
+.registerContainer a {
   color: var(--whiteColor);
 }
-.logginForm {
+.registerForm {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 10px;
+  position: relative;
+}
+.registerForm h4 {
+  font-size: 30px;
+}
+.registerForm input {
+  width: 90%;
+  background-color: transparent;
+  outline: none;
+  box-shadow: none;
+  border: 1px solid var(--whiteColor);
+  border-radius: 3px;
+  padding: 15px;
+  color: var(--whiteColor);
+}
+.registerForm button {
+  width: 90%;
+  color: var(--whiteColor);
+  border: 2px solid var(--whiteColor);
+  box-shadow: inset 0 0 0 0 var(--whiteColor);
+}
+
+.registerForm button:hover {
+  color: var(--blackColor);
+  box-shadow: inset 0 -100px 0 0 var(--whiteColor);
+}
+
+.registerForm small {
+  color: red;
+  font-size: 13px;
+  height: 13px;
+  width: 100%;
+  text-align: center;
+}
+
+.registerContainer hr {
+  width: 90%;
+  border: 1px solid var(--whiteColor);
+}
+
+.registerContainer > button {
+  width: 90%;
+  height: 50px;
+  background-color: aliceblue;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 3px;
+  font-family: Helvetica, sans-serif;
+  font-size: 15px;
+}
+.registerContainer > button:hover {
+  transform: scale(1.03);
+}
+.logginWhitSocial img {
+  height: 90%;
+}
+.logginWhitSocial {
+  width: 100%;
+  height: 100%;
+}
+
+.logginWhitSocial {
+  background-color: aliceblue;
+}
+.logginWhitSocial {
+  background-color: aliceblue;
+}
+
+.footerSection {
+  position: relative;
+  bottom: 0;
+}
+
+.terms {
+  gap: 5px;
+  display: flex;
+  font-size: 15px;
+  justify-content: space-between;
+}
+.terms input {
+  width: 20px;
+  height: 20px;
+}
+
+.formFieldError {
+  border: 1px solid rgba(198, 11, 11, 0.952) !important;
+}
+
+.formFieldsuccess {
+  border: 1px solid rgba(2, 132, 0, 0.952) !important;
+}
+
+.loggin {
+
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.246);
+  z-index: 20;
+  backdrop-filter: blur(10px);
+  animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.logginContainer {
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  background-color: rgb(0, 0, 0);
+  margin: 0 auto;
+  position: relative;
+  top: 10%;
+  animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+}
+
+@keyframes puff-in-center {
+  0% {
+    transform: scale(2);
+    filter: blur(4px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+.logginForm {
+  color: var(--whiteColor);
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  width: 50%;
   gap: 20px;
 }
-.logginForm h4{
-    font-size: 30px;
+.logginForm i{
+  cursor: pointer;
+  padding: 15px;
+  font-size: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--whiteColor);
 }
 .logginForm input {
   width: 90%;
@@ -73,6 +214,7 @@
   padding: 15px;
   color: var(--whiteColor);
 }
+
 .logginForm button {
   width: 90%;
   color: var(--whiteColor);
@@ -84,46 +226,24 @@
   color: var(--blackColor);
   box-shadow: inset 0 -100px 0 0 var(--whiteColor);
 }
-
-.logginContainer hr{
-    width: 90%;
-    border: 1px solid var(--whiteColor);
+.logginForm a {
+  color: var(--whiteColor);
+  font-weight: 200;
+  font-size: 20px;
+}
+.logginForm a:hover {
+  color: yellow;
+}
+.logginForm h4 {
+  font-size: 30px;
 }
 
-.logginContainer > button{
-    width: 90%;
-    height: 50px;
-     background-color: aliceblue;
-     display: flex;
-     justify-content: space-around;
-     align-items: center;
-     gap: 20px;
-     cursor: pointer;
-     border: none;
-     border-radius: 5px;
-     padding: 3px;
- font-family: Helvetica, sans-serif;
-     font-size: 15px;
-}
-.logginContainer > button:hover{
-    transform: scale(1.03);
-}
-.logginWhitSocial img{
-    height: 90%;
-}
-.logginWhitSocial{
-    width: 100%;
-    height: 100%;
+.logginContainer video {
+  width: 50%;
+  height: 100%;
 }
 
-.logginWhitSocial{
-    background-color: aliceblue;
-}
-.logginWhitSocial{
-    background-color: aliceblue;
-}
-
-.footerSection{
-    position: ab;
-    bottom: 0;
+.logginContainer hr {
+  width: 90%;
+  border: 1px solid var(--whiteColor);
 }
