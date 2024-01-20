@@ -1,3 +1,7 @@
+const $burgerContainer = document.querySelector(".navContainer");
+const $closeBurger = document.getElementById("exitBurger");
+const $openBurger = document.getElementById("burgerOpener");
+
 const $regForm = document.getElementById("regForm");
 
 const $username = document.getElementById("username");
@@ -6,6 +10,19 @@ const $password = document.getElementById("password");
 const $repeatPassword = document.getElementById("repeatPasword");
 const $terms = document.getElementById("terms");
 const $termsSmall = document.getElementById("termsSmall");
+
+const $closeLoggin = document.getElementById('closeLoggin')
+const $logginSecition = document.getElementById('logginSection')
+const $openLoggin = document.getElementById('openLoggin')
+const $openLogginBurger = document.getElementById('openLogginBurger')
+const $logginContainer = document.getElementById('logginContainer')
+
+
+
+const OPEN_BURGER = () => {
+  $burgerContainer.classList.toggle("navContainerActive");
+};
+
 
 const users = JSON.parse(localStorage.getItem("users")) || [];
 
@@ -181,7 +198,20 @@ const REGISTER_OK = (e) => {
   window.location.href = "/index.html";
 };
 
+
+const CLOSE_LOGGIN = () => {
+  $logginSecition.classList.toggle('showLoggin')
+}
+const CLOSE_LOGGIN_IF_OUTSIDE = (e) => {
+if(e.target.classList.contains('loggin')){
+  $logginSecition.classList.toggle('showLoggin')
+}
+}
+
 const INIT = () => {
+  $openBurger.addEventListener("click", OPEN_BURGER);
+  $closeBurger.addEventListener("click", OPEN_BURGER);
+
   $username.addEventListener("input", () => {
     CHECK_INPUT($username);
   });
@@ -196,6 +226,14 @@ const INIT = () => {
   });
 
   $regForm.addEventListener("submit", REGISTER_OK);
+
+
+  $closeLoggin.addEventListener('click', CLOSE_LOGGIN )
+  $openLoggin.addEventListener('click', CLOSE_LOGGIN )
+  $openLogginBurger.addEventListener('click', CLOSE_LOGGIN )
+
+  $logginSecition.addEventListener('click', CLOSE_LOGGIN_IF_OUTSIDE )
 };
 
 INIT();
+ 

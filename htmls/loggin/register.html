@@ -6,12 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
   <link rel="stylesheet" href="/htmls/css/style.css" />
-  <link rel="stylesheet" href="/htmls/css/mediasQueries.css" />
+
   <link rel="stylesheet" href="/htmls/man/css/clothingman.css" />
 
   <link rel="stylesheet" href="/htmls/man/css/mediasQManWoman.css">
   <link rel="stylesheet" href="/htmls/loggin/css/loggin.css">
   <link rel="stylesheet" href="/htmls/loggin/css/logginMediasquerys.css">
+
+  <link rel="stylesheet" href="/htmls/css/mediasQueries.css" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,6 +28,7 @@
 </head>
 
 <body>
+ 
   <div class="headerWraper">
     <section class="discountSection">
       <div class="discountContainer">
@@ -41,7 +44,7 @@
 
       <nav class="navContainer">
         <label for="burgerMenu">
-          <img src="/assets/headerAssets/exitBurger.svg" alt="" id="exitBurger" />
+          <img src="/assets/headerAssets/exitBurger.svg" alt="" id="exitBurger" class="burgerMenu__icon" />
         </label>
 
         <ul>
@@ -57,15 +60,16 @@
         <nav class="burger--loggin-register">
           <ul>
             <li><a href="/index.html">INICIO</a></li>
-            <li><a href="#">¡INICIAR SESION!</a></li>
+            <li><a href="#" id="openLogginBurger">¡INICIAR SESION!</a></li>
           </ul>
-          <label for="burgerMenu">
-            <img src="/assets/headerAssets/burgerMenu.svg" alt="" />
-          </label>
+
+        <label for="burgerMenu" class="burgerMenu__icon" id="burgerOpener">
+          <img src="/assets/headerAssets/burgerMenu.svg" alt="" />
+        </label>
         </nav>
 
-        <div data-tooltip="No estas registrado? ¡Registrate!" data-flow="bottom" class="loggin-register">
-          <img src="/assets/headerAssets/registerIcon.svg" alt="" />
+        <div data-tooltip="¡INICIAR SESION!" data-flow="bottom" class="loggin-register" id="openLoggin">
+          <img src="/assets/headerAssets/logginIcon.svg" alt="" />
         </div>
       </div>
     </header>
@@ -112,9 +116,9 @@
         <form class="registerForm" id="regForm">
           <h4>¡Bienvenido!</h4>
           <h5>¡Registrate para obtener una mejor experiencia!</h5>
-          <input type="text" name="username" id="username" placeholder="Elige nombre de Usuario">
+          <input type="text" name="username" id="username" placeholder="Elige nombre de Usuario" autocomplete="off">
           <small></small>
-          <input type="text" name="email" placeholder="Email" autocomplete="off" id="email" />
+          <input type="email" name="email" placeholder="Email" autocomplete="off" id="email" />
           <small></small>
           <input type="password" name="password" placeholder="Passsword" id="password" autocomplete="off" />
           <small></small>
@@ -135,24 +139,18 @@
 
 
       </div>
-
-
-      <section class="whatsappIcon" data-tooltip="Whatsappeanos ; )" data-flow="left">
-        <a href="#">
-          <img src="/assets/wsp.png" alt="">
-        </a>
-      </section>
+<video src="/assets/logginAssets/registerVideo.mp4" autoplay muted loop></video>
 
     </section>
 
   </main>
 
 
-  <section class="loggin">
-    <div class="logginContainer">
+  <section class="loggin" id="logginSection">
+    <div class="logginContainer" id="logginContainer">
       <video src="/assets/logginAssets/logginVideo.mp4" autoplay muted loop></video>
       <form class="logginForm">
-        <i class="fa-solid fa-xmark"></i>
+        <i class="fa-solid fa-xmark" id="closeLoggin"></i>
         <h4>¡HOLA!</h4>
         <h5>¡Que bueno tenerte de vuelta!</h5>
         <input type="text" name="username" id="logginUsername" placeholder="Ingresa tu Usuario" autocomplete="off">
@@ -172,6 +170,12 @@
   </section>
 
 
+
+  <section class="whatsappIcon" data-tooltip="Whatsappeanos ; )" data-flow="left">
+    <a href="#">
+      <img src="/assets/wsp.png" alt="">
+    </a>
+  </section>
 
   <footer class="footerSection">
     <div>

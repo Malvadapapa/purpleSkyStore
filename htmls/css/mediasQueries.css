@@ -34,6 +34,20 @@
     width: 50px;
   }
 }
+@media (max-width: 1250px){
+  .logginForm{
+    gap: 10px;
+  }
+  .logginForm input{
+    padding: 5px;
+  }
+  .logginForm h4 {
+    font-size: 20px;
+  }
+  .logginForm h5 {
+    font-size: 15px;
+  }
+}
 
 @media (max-width: 1120px) {
   .headerSection {
@@ -195,7 +209,21 @@
   }
 
 }
-
+@media (max-width: 800px) {
+  .logginContainer video {
+display: none;
+  }
+  .logginForm{
+    gap: 15px;
+  }
+  .logginContainer{
+    width: 80%;
+  }
+  .logginForm {
+    width: 100%;
+    padding: 10px;
+  }
+}
 @media (max-width: 700px) {
   .clothingIndexSection {
     display: grid;
@@ -223,6 +251,12 @@
     height: 30%;
   }
 
+
+
+
+
+
+
 }
 
 @media (max-width: 600px) {
@@ -246,6 +280,7 @@
     height: 30px;
   }
 }
+ 
 @media (max-width: 400px) {
   .footerSection p {
     font-size: 8px;
