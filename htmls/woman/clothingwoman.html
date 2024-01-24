@@ -54,8 +54,8 @@
     <div class="headerSection--loggin-register">
       <nav class="burger--loggin-register">
         <ul>
-          <li><a href="/htmls/loggin/loggin.html">INICIAR SESION!</a></li>
-          <li><a href="#">¡REGISTRARSE!</a></li>
+          <li id="logginSesion_li"><a href="#" id="openLogginBurger">¡INICIAR SESION!</a></li>
+          <li id="burgerRegister"><a href="/htmls/loggin/register.html">¡REGISTRARSE!</a></li>
         </ul>
 
         <label for="burgerMenu" class="burgerMenu__icon" id="burgerOpener">
@@ -63,14 +63,11 @@
         </label>
 
       </nav>
-      <div data-tooltip="¡INICIAR SESION!" data-flow="bottom" class="loggin-register">
-        <img src="/assets/headerAssets/logginIcon.svg" alt="" />
+  
+      <div class="sesionContainer" id="sesionContainer">
+ 
       </div>
-      <a href="/htmls/loggin/register.html">
-        <div data-tooltip="No estas registrado? ¡Registrate!" data-flow="bottom" class="loggin-register">
-          <img src="/assets/headerAssets/registerIcon.svg" alt="" />
-        </div>
-      </a>
+
     </div>
   </header>
   <section class="bannerSection">
@@ -197,6 +194,29 @@
     <a href="#">
       <img src="/assets/wsp.png" alt="">
     </a>
+  </section>
+
+  <section class="loggin" id="logginSection">
+    <div class="logginContainer" id="logginContainer">
+      <video src="/assets/logginAssets/logginVideo.mp4" autoplay muted loop></video>
+      <form class="logginForm" id="logginForm">
+        <i class="fa-solid fa-xmark" id="closeLoggin"></i>
+        <h4>¡HOLA!</h4>
+        <h5>¡Que bueno tenerte de vuelta!</h5>
+        <input type="text" name="username" id="logginUsername" placeholder="Ingresa tu Usuario" autocomplete="off">
+        <small></small>
+        <input type="password" name="password" placeholder="Passsword" id="logginPassword" autocomplete="off" />
+        <small></small>
+        <hr>
+        <a href="/htmls/loggin/register.html">
+          <h5>¡¿No estas registrado?! Hacelo, amigo</h5>
+        </a>
+
+        <button class="clothingCards__button" type="submit" id="logginSubmit">Iniciar Sesion</button>
+      </form>
+
+    </div>
+
   </section>
 
   <footer class="footerSection">

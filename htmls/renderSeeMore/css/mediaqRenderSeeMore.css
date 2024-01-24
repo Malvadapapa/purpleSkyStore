@@ -1,0 +1,10 @@
+@media screen and (min-width:1800px) {
+    .selectedProductSection{
+        height: 1100px;
+    }
+    .mySwiper {
+       height: 40%;
+        box-sizing: border-box;
+        padding: 10px 0;
+      }
+}

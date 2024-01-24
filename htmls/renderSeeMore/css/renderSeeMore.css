@@ -91,13 +91,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .swiper-slide img {
   display: block;
   height: 100%;
 }
-
+/* .swiper-slide img:hover{
+  transform: scale(1.5);
+} */
 .swiper {
   height: 300px;
   margin-left: auto;

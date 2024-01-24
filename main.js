@@ -5,6 +5,15 @@ const $burgerContainer = document.querySelector(".navContainer");
 const $closeBurger = document.getElementById("exitBurger");
 const $openBurger = document.getElementById("burgerOpener");
 
+const $closeLoggin = document.getElementById("closeLoggin");
+const $logginSecition = document.getElementById("logginSection");
+const $logginUsername = document.getElementById("logginUsername");
+const $logginPassword = document.getElementById("logginPassword");
+const $logginForm = document.getElementById("logginForm");
+const $burgerRegister = document.getElementById("burgerRegister");
+const $logginSesion_li = document.getElementById("logginSesion_li");
+const $sesionContainer = document.getElementById("sesionContainer");
+
 //variables pertenecientes al carrito de compras
 const $cartContainer = document.getElementById("cartMainContainer");
 const $cart = document.querySelector(".cartCards__Container");
@@ -17,10 +26,12 @@ const $finishPurchase = document.getElementById("completePurchase");
 
 const $cartOpener = document.querySelector(".CartBtn");
 const $cartFocus = document.querySelector(".cartFocus");
+ 
 
-/* //variable del contenedor del renderizado de productos
-const $cardContainer = document.getElementById("cardRenderContainer");
- */
+
+const $skateRenderSection = document.getElementById("skateRenderSection")
+
+
 ////////////////APERTURA Y CIERRE DEL MENU////////////////
 ////////////////HAMBURGUESA////////////////
 
@@ -277,23 +288,283 @@ const BUY_CART = () => {
 const ON_LOAD_PAGE = () => {
   DISABLE_CART_BUTTON($emptyCartBtn);
   DISABLE_CART_BUTTON($finishPurchase);
-};
+     GET_RANDOM_SKATE_OBJETS(productsData['skateboarding']) 
 
-
-let swiper = new Swiper(".mySwiper", {
+  let swiper = new Swiper(".mySwiper", {
     spaceBetween: 0,
     centeredSlides: true,
     autoplay: {
-      delay: 3000,
+      delay: 4000,
       disableOnInteraction: false,
     },
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
-    }
+    },
   });
+  let swiper2 = new Swiper(".sliderSkate", {
+    loop: true,
+    centeredSlides: true,
+    zoom: true,
+    autoplay: {
+      //autoplay
+      delay: 3000,
+    },
+    pagination: {
+      //pagination(dots)
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+};
+
+
+
+//----------INICIO DE SESION ----------//
+const users = JSON.parse(localStorage.getItem("users")) || [];
+
+const OPEN_LOGGIN = (e) => {
+  console.log(e.target);
+  if (e.target.classList.contains("openLoggin")) {
+    $logginSecition.classList.toggle("showLoggin");
+  }
+};
+
+const CLOSE_LOGGIN = () => {
+  $logginSecition.classList.toggle("showLoggin");
+};
+const CLOSE_LOGGIN_IF_OUTSIDE = (e) => {
+  if (e.target.classList.contains("loggin")) {
+    $logginSecition.classList.toggle("showLoggin");
+  }
+};
+const LOGGOUT = (e) => {
+  if (e.target.classList.contains("loggOut")) {
+    if (window.confirm("Estas seguro que deseas salir?")) {
+      setTimeout(() => {
+        sessionStorage.removeItem("activeUser");
+        location.reload();
+      }, 1000);
+    } else {
+      return;
+    }
+  }
+};
+
+const CHECK_IF_LOGGIN_EMPTY = (input) => {
+  return !input.value.trim().length;
+};
+
+const CHECK_EXISTING_LOGGIN_USERNAME = (input) => {
+  return users.some((user) => user.userName === input.value.trim());
+};
+const CHECK_IS_MATCHING_PASSWORD = (input) => {
+  const user = users.find(
+    (user) => user.userName === $logginUsername.value.trim()
+  );
+  return user.password === input.value.trim();
+};
+
+const SHOW_LOGGIN_ERROR = (input, message, inputSmall) => {
+  inputSmall.innerHTML = "";
+  input.classList.remove("formFieldsuccess");
+  input.classList.add("formFieldError");
+  inputSmall.innerHTML = message;
+};
+
+const SHOW_LOGGIN_SUCCES = (input, inputSmall) => {
+  input.classList.remove("formFieldError");
+  input.classList.add("formFieldsuccess");
+  inputSmall.innerHTML = "";
+};
+const RESET_FORM = (input, inputSmall) => {
+  inputSmall.innerHTML = "";
+  input.classList.remove("formFieldsuccess");
+  input.classList.remove("formFieldError");
+};
+const IS_VALID_ACCOUNT = (input) => {
+  let valid = false;
+  const formFieldSmall = input.nextElementSibling;
+  if (CHECK_IF_LOGGIN_EMPTY(input)) {
+    SHOW_LOGGIN_ERROR(input, "Este campo no debe estar vacio", formFieldSmall);
+    return;
+  }
+  if (!CHECK_EXISTING_LOGGIN_USERNAME(input)) {
+    SHOW_LOGGIN_ERROR(
+      input,
+      "El Usuario ingresado no existe =S",
+      formFieldSmall
+    );
+    return;
+  }
+  SHOW_LOGGIN_SUCCES(input, formFieldSmall);
+
+  valid = true;
+  return valid;
+};
+
+const IS_VALID_PASSWORD = (input) => {
+  let valid = false;
+  const formFieldSmall = input.nextElementSibling;
+  if (CHECK_IF_LOGGIN_EMPTY(input)) {
+    SHOW_LOGGIN_ERROR(input, "Este campo no debe estar vacio", formFieldSmall);
+    return;
+  }
+  if (!CHECK_IS_MATCHING_PASSWORD(input)) {
+    SHOW_LOGGIN_ERROR(
+      input,
+      "La contraseña ingresada no es valida",
+      formFieldSmall
+    );
+    return;
+  }
+
+  SHOW_LOGGIN_SUCCES(input, formFieldSmall);
+
+  valid = true;
+  return valid;
+};
+
+const LOGGIN = (e) => {
+  e.preventDefault();
+  let validUsername = IS_VALID_ACCOUNT($logginUsername);
+  let validPassword = IS_VALID_PASSWORD($logginPassword);
+
+  if (validUsername && validPassword) {
+    const user = users.find(
+      (user) => user.userName === $logginUsername.value.trim()
+    );
+    sessionStorage.setItem("activeUser", JSON.stringify(user));
+    alert("Has iniciado sesion correctamente =)");
+    setTimeout(() => {
+      location.reload();
+    }, 1000);
+    return;
+  }
+  /*   RESET_FORM($logginPassword, formFieldSmall);
+  $logginForm.reset(); */
+};
+const activeUser = sessionStorage.activeUser
+  ? JSON.parse(sessionStorage.activeUser)
+  : false;
+
+const IS_ACTIVE_USER = () => {
+  if (activeUser) {
+    $burgerRegister.classList.toggle("isLoggedIn");
+    $logginSesion_li.innerHTML = `<h3>${activeUser.userName}</h3>   <span class="loggOut" > Salir <i class="fa fa-sign-out" aria-hidden="true"></i></span>`;
+    $sesionContainer.innerHTML = `<h3>${activeUser.userName}</h3>   <span class="loggOut" > Salir <i class="fa fa-sign-out" aria-hidden="true"></i></span>`;
+    return
+  } else {
+
+    $logginSesion_li.innerHTML = `<a href="#" class="openLoggin" id="openLogginBurger">¡INICIAR SESION!</a>`;
+    $sesionContainer.innerHTML = `
+   <div data-tooltip="¡INICIAR SESION!" data-flow="bottom" class="loggin-register openLoggin" id="openLoggin">
+   <img  src="/assets/headerAssets/logginIcon.svg" class="openLoggin" alt="" />
+   </div>
+
+   <a href="/htmls/loggin/register.html">
+   <div data-tooltip="No estas registrado? ¡Registrate!" data-flow="bottom" class="loggin-register">
+     <img src="assets/headerAssets/registerIcon.svg" alt="" />
+   </div>
+ </a>
+
+   `;
+  }
+};
+
+
+// -------------- Renderizado de objetos de Skate en el Index --------------
+
+const RENDER_RANDOM_SKATE_ITEMS = (array) => {
+  const selectedProductCategory = "skateboarding"
+  return $skateRenderSection.innerHTML = `
+  ${array.map((product) => {
+      const { id, img, description, price, discountType } = product;
+      return`
+    <div class="skateContainer">
+    <div class="swiper sliderSkate">
+      <div class="swiper-wrapper ">
+        <div class="swiper-slide"><img src="${img[0]}"></div>
+        <div class="swiper-slide"><img src="${img[1]}"></div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+    <div class="skateContainer_description">
+      <span class="skateContainer_description__txtWrapper">
+        <h4>${description}</h4>
+        <p>$ ${price}</p>
+        <img src="assets/indexClothing/creditCardsA.png" alt="" class="creditCards">
+        <img src="assets/indexClothing/creditCardsB.png" alt="" class="creditCards">
+      </span>
+
+      <span class="skateContainer_description__btnWrapper">
+        <button class="clothingCards__button addToCart" data-id="${id}" data-description="${description}"
+          data-price="${price}" data-img="${img[0]}">AGREGAR AL CARRITO</button>
+
+        <a href="./htmls/renderSeeMore/renderSeeMore.html?id=${id}&category=${selectedProductCategory}"
+          class="seeMore_btn">
+          VER MAS
+        </a>
+
+
+      </span>
+
+
+    </div>
+  </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    `
+  }).join("")}
+  `
+}
+const GET_RANDOM_SKATE_OBJETS = (array) => {
+  const obtenerIndiceAleatorio = (max) => Math.floor(Math.random() * max);
+    const [indice1, indice2] = [obtenerIndiceAleatorio(array.length), obtenerIndiceAleatorio(array.length - 1)];
+  const segundoIndiceAjustado = indice2 >= indice1 ? indice2 + 1 : indice2;
+let randomArray = [array[indice1], array[segundoIndiceAjustado]];
+
+  return RENDER_RANDOM_SKATE_ITEMS(randomArray)
+};
+ 
+
+
+
+
+
+
+
+const todasLasEntries = Object.values(productsData).flat();
+const priorityCards = todasLasEntries.filter(objeto => objeto.priority === true);
+console.log(priorityCards)
+const obtenerNumeroAleatorio = () => Math.random() - 0.5;
+ 
+const objetosAleatorios = priorityCards.sort(obtenerNumeroAleatorio);
+
+// Tomar los primeros 12 elementos del array
+const primerosDoceObjetos = objetosAleatorios.slice(0, 12);
+
+console.log(primerosDoceObjetos);
+
+
+
+
+
+
+
+
+
+
 
 const init = () => {
+
+
   //menu hamburguesa
   $openBurger.addEventListener("click", OPEN_BURGER);
   $closeBurger.addEventListener("click", CLOSE_BURGER);
@@ -309,6 +580,19 @@ const init = () => {
 
   $emptyCartBtn.addEventListener("click", EMPTY_CART);
   $finishPurchase.addEventListener("click", BUY_CART);
+
+  $closeLoggin.addEventListener("click", CLOSE_LOGGIN);
+
+  $sesionContainer.addEventListener("click", OPEN_LOGGIN);
+  $logginSesion_li.addEventListener("click", OPEN_LOGGIN);
+
+  $sesionContainer.addEventListener("click", LOGGOUT);
+  $logginSesion_li.addEventListener("click", LOGGOUT);
+
+  $logginSecition.addEventListener("click", CLOSE_LOGGIN_IF_OUTSIDE);
+
+  $logginForm.addEventListener("submit", LOGGIN);
+  IS_ACTIVE_USER();
 };
 
 init();

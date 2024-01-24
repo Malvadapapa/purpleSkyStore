@@ -28,7 +28,7 @@
 </head>
 
 <body>
- 
+
   <div class="headerWraper">
     <section class="discountSection">
       <div class="discountContainer">
@@ -39,7 +39,7 @@
       </div>
     </section>
     <header class="headerSection">
-      <a href="#">
+      <a href="/index.html">
         <img src="/assets/headerAssets/logoHeader.svg" alt="" /></a>
 
       <nav class="navContainer">
@@ -60,7 +60,7 @@
         <nav class="burger--loggin-register">
           <ul>
             <li><a href="/index.html">INICIO</a></li>
-            <li><a href="#" id="openLogginBurger">¡INICIAR SESION!</a></li>
+            <li id="logginSesion_li"><a href="#" id="openLogginBurger">¡INICIAR SESION!</a></li>
           </ul>
 
         <label for="burgerMenu" class="burgerMenu__icon" id="burgerOpener">
@@ -68,9 +68,16 @@
         </label>
         </nav>
 
-        <div data-tooltip="¡INICIAR SESION!" data-flow="bottom" class="loggin-register" id="openLoggin">
-          <img src="/assets/headerAssets/logginIcon.svg" alt="" />
-        </div>
+
+<div class="sesionContainer" id="sesionContainer">
+
+  <div data-tooltip="¡INICIAR SESION!" data-flow="bottom" class="loggin-register" id="openLoggin">
+    <img src="/assets/headerAssets/logginIcon.svg" alt="" />
+  </div>
+
+
+</div>
+
       </div>
     </header>
 
@@ -149,7 +156,7 @@
   <section class="loggin" id="logginSection">
     <div class="logginContainer" id="logginContainer">
       <video src="/assets/logginAssets/logginVideo.mp4" autoplay muted loop></video>
-      <form class="logginForm">
+      <form class="logginForm" id="logginForm">
         <i class="fa-solid fa-xmark" id="closeLoggin"></i>
         <h4>¡HOLA!</h4>
         <h5>¡Que bueno tenerte de vuelta!</h5>
@@ -162,7 +169,7 @@
           <h5>¡¿No estas registrado?! Hacelo, amigo</h5>
         </a>
 
-        <button class="clothingCards__button" type="submit">Iniciar Sesion</button>
+        <button class="clothingCards__button" type="submit" id="logginSubmit">Iniciar Sesion</button>
       </form>
 
     </div>

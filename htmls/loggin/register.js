@@ -11,18 +11,19 @@ const $repeatPassword = document.getElementById("repeatPasword");
 const $terms = document.getElementById("terms");
 const $termsSmall = document.getElementById("termsSmall");
 
-const $closeLoggin = document.getElementById('closeLoggin')
-const $logginSecition = document.getElementById('logginSection')
-const $openLoggin = document.getElementById('openLoggin')
-const $openLogginBurger = document.getElementById('openLogginBurger')
-const $logginContainer = document.getElementById('logginContainer')
+const $closeLoggin = document.getElementById("closeLoggin");
+const $logginSecition = document.getElementById("logginSection");
+ const $logginUsername = document.getElementById("logginUsername");
+const $logginPassword = document.getElementById("logginPassword");
+const $logginSubmitBtn = document.getElementById("logginSubmit");
+const $logginForm = document.getElementById("logginForm");
 
-
+const $logginSesion_li = document.getElementById('logginSesion_li')
+const $sesionContainer = document.getElementById('sesionContainer')
 
 const OPEN_BURGER = () => {
   $burgerContainer.classList.toggle("navContainerActive");
 };
-
 
 const users = JSON.parse(localStorage.getItem("users")) || [];
 
@@ -199,15 +200,142 @@ const REGISTER_OK = (e) => {
 };
 
 
+const OPEN_LOGGIN = (e) => {
+  if (e.target.classList.contains("openLoggin")) {
+    $logginSecition.classList.toggle("showLoggin");
+  }
+};
+
+
 const CLOSE_LOGGIN = () => {
-  $logginSecition.classList.toggle('showLoggin')
-}
+  $logginSecition.classList.toggle("showLoggin");
+};
 const CLOSE_LOGGIN_IF_OUTSIDE = (e) => {
-if(e.target.classList.contains('loggin')){
-  $logginSecition.classList.toggle('showLoggin')
+  if (e.target.classList.contains("loggin")) {
+    $logginSecition.classList.toggle("showLoggin");
+  }
+};
+const LOGGOUT = (e)=> {
+  if (e.target.classList.contains("loggOut")) {
+
+if (window.confirm('Estas seguro que deseas salir?')) {
+  setTimeout(() => {
+    sessionStorage.removeItem('activeUser');
+    location.reload();
+  }, 1000);
+} else{
+  return
 }
+ 
+  }
 }
 
+const CHECK_IF_LOGGIN_EMPTY = (input) => {
+  return !input.value.trim().length;
+};
+
+const CHECK_EXISTING_LOGGIN_USERNAME = (input) => {
+  return users.some((user) => user.userName === input.value.trim());
+};
+const CHECK_IS_MATCHING_PASSWORD = (input) => {
+  const user = users.find((user) => user.userName === $logginUsername.value.trim()
+  );
+   return user.password === input.value.trim();
+};
+
+const SHOW_LOGGIN_ERROR = (input, message, inputSmall) => {
+  inputSmall.innerHTML = "";
+  input.classList.remove("formFieldsuccess");
+  input.classList.add("formFieldError");
+  inputSmall.innerHTML = message;
+};
+
+const SHOW_LOGGIN_SUCCES = (input, inputSmall) => {
+  input.classList.remove("formFieldError");
+  input.classList.add("formFieldsuccess");
+  inputSmall.innerHTML = "";
+};
+const RESET_FORM = (input, inputSmall) => {
+  inputSmall.innerHTML = "";
+  input.classList.remove("formFieldsuccess");
+  input.classList.remove("formFieldError");
+};
+const IS_VALID_ACCOUNT = (input) => {
+  let valid = false;
+  const formFieldSmall = input.nextElementSibling;
+  if (CHECK_IF_LOGGIN_EMPTY(input)) {
+    SHOW_LOGGIN_ERROR(input, "Este campo no debe estar vacio", formFieldSmall);
+    return;
+  }
+  if (!CHECK_EXISTING_LOGGIN_USERNAME(input)) {
+    SHOW_LOGGIN_ERROR(
+      input,
+      "El Usuario ingresado no existe =S",
+      formFieldSmall
+    );
+    return;
+  }
+  SHOW_LOGGIN_SUCCES(input, formFieldSmall);
+
+  valid = true;
+  return valid;
+};
+
+const IS_VALID_PASSWORD = (input) => {
+  let valid = false;
+  const formFieldSmall = input.nextElementSibling;
+  if (CHECK_IF_LOGGIN_EMPTY(input)) {
+    SHOW_LOGGIN_ERROR(input, "Este campo no debe estar vacio", formFieldSmall);
+    return;
+  }
+  if (!CHECK_IS_MATCHING_PASSWORD(input)) {
+    SHOW_LOGGIN_ERROR(input, "La contraseña ingresada no es valida", formFieldSmall);
+    return;
+  }
+
+  SHOW_LOGGIN_SUCCES(input, formFieldSmall);
+
+  valid = true;
+  return valid;
+};
+
+const LOGGIN = (e) => {
+  e.preventDefault();
+  let validUsername = IS_VALID_ACCOUNT($logginUsername);
+  let validPassword = IS_VALID_PASSWORD($logginPassword);
+
+if (validUsername && validPassword) {
+  const user = users.find((user) => user.userName === $logginUsername.value.trim())
+   sessionStorage.setItem('activeUser', JSON.stringify(user))
+  alert('Has iniciado sesion correctamente =)')
+  setTimeout(() => {
+    location.reload();
+  }, 1000);
+    return
+}
+/*   RESET_FORM($logginPassword, formFieldSmall);
+  $logginForm.reset(); */
+};
+ const activeUser = sessionStorage.activeUser ? JSON.parse(sessionStorage.activeUser) : false;
+
+
+ const IS_ACTIVE_USER = () => {
+
+if (activeUser) { 
+$logginSesion_li.innerHTML = `<h3>${activeUser.userName}  <span class="loggOut" > Salir <i class="fa fa-sign-out" aria-hidden="true"></i></span></h3> `
+$sesionContainer.innerHTML = `<h3>${activeUser.userName}  <span class="loggOut" > Salir <i class="fa fa-sign-out" aria-hidden="true"></i></span></h3>`
+
+}else {
+   $logginSesion_li.innerHTML = `<a href="#" class="openLoggin" id="openLogginBurger">¡INICIAR SESION!</a>`
+   $sesionContainer.innerHTML = `
+   <div data-tooltip="¡INICIAR SESION!" data-flow="bottom" class="loggin-register openLoggin" id="openLoggin">
+   <img  src="/assets/headerAssets/logginIcon.svg" class="openLoggin" alt="" />
+   </div>
+
+
+   `
+}
+ }
 const INIT = () => {
   $openBurger.addEventListener("click", OPEN_BURGER);
   $closeBurger.addEventListener("click", OPEN_BURGER);
@@ -227,13 +355,18 @@ const INIT = () => {
 
   $regForm.addEventListener("submit", REGISTER_OK);
 
+  $closeLoggin.addEventListener("click", CLOSE_LOGGIN);
 
-  $closeLoggin.addEventListener('click', CLOSE_LOGGIN )
-  $openLoggin.addEventListener('click', CLOSE_LOGGIN )
-  $openLogginBurger.addEventListener('click', CLOSE_LOGGIN )
+  $sesionContainer.addEventListener("click", OPEN_LOGGIN);
+  $logginSesion_li.addEventListener("click", OPEN_LOGGIN);
+ 
+  $sesionContainer.addEventListener("click", LOGGOUT);
+  $logginSesion_li.addEventListener("click", LOGGOUT);
 
-  $logginSecition.addEventListener('click', CLOSE_LOGGIN_IF_OUTSIDE )
+  $logginSecition.addEventListener("click", CLOSE_LOGGIN_IF_OUTSIDE);
+
+  $logginForm.addEventListener("submit", LOGGIN);
+  IS_ACTIVE_USER()
 };
 
 INIT();
- 

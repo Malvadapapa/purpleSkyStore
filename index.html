@@ -10,9 +10,13 @@
   <meta name="theme-color" content="#ffffff">
 
   <link rel="stylesheet" href="/htmls/css/style.css" />
-  <link rel="stylesheet" href="/htmls/css/mediasQueries.css" />
 
   <link rel="stylesheet" href="/htmls/man/css/clothingman.css" />
+
+
+  <link rel="stylesheet" href="/htmls/loggin/css/logginMediasquerys.css">
+  <link rel="stylesheet" href="/htmls/css/mediasQueries.css" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:wght@500&display=swap"
@@ -60,8 +64,8 @@
     <div class="headerSection--loggin-register">
       <nav class="burger--loggin-register">
         <ul>
-          <li><a href="#">INICIAR SESION!</a></li>
-          <li><a href="/htmls/loggin/register.html">¡REGISTRARSE!</a></li>
+          <li id="logginSesion_li"><a href="#" id="openLogginBurger">¡INICIAR SESION!</a></li>
+          <li id="burgerRegister"><a href="/htmls/loggin/register.html">¡REGISTRARSE!</a></li>
         </ul>
         <!-- INCONO QUE ABRE EL MENU HAMBURGUESA -->
         <label for="burgerMenu" class="burgerMenu__icon" id="burgerOpener">
@@ -70,15 +74,9 @@
 
 
       </nav>
+      <div class="sesionContainer" id="sesionContainer">
 
-      <div data-tooltip="¡INICIAR SESION!" data-flow="bottom" class="loggin-register">
-        <img src="assets/headerAssets/logginIcon.svg" alt="" />
       </div>
-      <a href="/htmls/loggin/register.html">
-        <div data-tooltip="No estas registrado? ¡Registrate!" data-flow="bottom" class="loggin-register">
-          <img src="assets/headerAssets/registerIcon.svg" alt="" />
-        </div>
-      </a>
 
     </div>
   </header>
@@ -87,15 +85,7 @@
 
 
 
-
-
-
   <!--     <div class="imgContainer">
-
-
-
-
-
     </div> -->
 
   <section class="heroSliderSection">
@@ -118,12 +108,8 @@
   <section class="indexZapaHero">
 
     <div class="indexZapaHeroCover">
-      <h2>Ride & Style: Estilo en Movimiento</h2>
-      <span>
-        <img src="/assets/indexClothing/indexShoes/trueno.webp" alt="">
-        <img src="/assets/indexClothing/indexShoes/trueno.webp" alt="">
-        <img src="/assets/indexClothing/indexShoes/trueno.webp" alt="">
-      </span>
+      <h2>Estilo en Movimiento</h2>
+
     </div>
 
     <ul class="sliderZapaContainerUL">
@@ -131,6 +117,7 @@
 
         <div class="sliders">
           <div class="imgSlider">
+
             <img src="/assets/indexClothing/indexShoes/1noBG.webp" alt="">
           </div>
 
@@ -149,39 +136,26 @@
             <p>$40.425,00</p>
 
             <span>
-              <button class="seeMoreBTN">
-                <div class="seeMoreBTN_text">
-                  <span>Ver</span>
-                  <span>Mas</span>
+              <a href="/htmls/renderSeeMore/renderSeeMore.html?id=230cf804-4479-4954-8858-bfb2010666bf&category=shoes">
+                <button class="seeMoreBTN">
+                  <div class="seeMoreBTN_text">
+                    <span>Ver</span>
+                    <span>Mas</span>
 
-                </div>
-                <div class="clone">
-                  <span>Ver</span>
-                  <span>Mas</span>
+                  </div>
+                  <div class="clone">
+                    <span>Ver</span>
+                    <span>Mas</span>
 
-                </div>
-                <svg width="20px" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                  stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                </svg>
-              </button>
+                  </div>
+                  <svg width="20px" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                  </svg>
+                </button>
 
-              <button class="seeMoreBTN">
-                <div class="seeMoreBTN_text">
-                  <span>Comprar</span>
-                  <span>Ahora</span>
 
-                </div>
-                <div class="clone">
-                  <span>Comprar</span>
-                  <span>Ahora</span>
-
-                </div>
-                <svg width="20px" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                  stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                </svg>
-              </button>
+              </a> 
             </span>
           </div>
         </div>
@@ -205,43 +179,25 @@
 
             </div>
             <p>$44.940,00</p>
-            <span>
+            <span> 
+              <a href="/htmls//renderSeeMore/renderSeeMore.html?id=3912b402-90e4-4af1-96fe-d8ea9bce7bef&category=shoes">
+                <button class="seeMoreBTN">
+                  <div class="seeMoreBTN_text">
+                    <span>Ver</span>
+                    <span>Mas</span>
 
-              <button class="seeMoreBTN">
-                <div class="seeMoreBTN_text">
-                  <span>Ver</span>
-                  <span>Mas</span>
+                  </div>
+                  <div class="clone">
+                    <span>Ver</span>
+                    <span>Mas</span>
 
-                </div>
-                <div class="clone">
-                  <span>Ver</span>
-                  <span>Mas</span>
-
-                </div>
-                <svg width="20px" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                  stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                </svg>
-              </button>
-
-              <button class="seeMoreBTN">
-                <div class="seeMoreBTN_text">
-                  <span>Comprar</span>
-                  <span>Ahora</span>
-
-                </div>
-                <div class="clone">
-                  <span>Comprar</span>
-                  <span>Ahora</span>
-
-                </div>
-                <svg width="20px" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                  stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                </svg>
-              </button>
-
-
+                  </div>
+                  <svg width="20px" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                  </svg>
+                </button>
+              </a>
             </span>
 
 
@@ -269,42 +225,26 @@
             </div>
             <p>$62.500,00</p>
             <span>
+<a href="/htmls//renderSeeMore/renderSeeMore.html?id=f716845e-0b3e-44df-867e-4a0b8301f56a&category=shoes">
+  <button class="seeMoreBTN">
+    <div class="seeMoreBTN_text">
+      <span>Ver</span>
+      <span>Mas</span>
 
-              <button class="seeMoreBTN">
-                <div class="seeMoreBTN_text">
-                  <span>Ver</span>
-                  <span>Mas</span>
+    </div>
+    <div class="clone">
+      <span>Ver</span>
+      <span>Mas</span>
 
-                </div>
-                <div class="clone">
-                  <span>Ver</span>
-                  <span>Mas</span>
+    </div>
+    <svg width="20px" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+      stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+    </svg>
+  </button>
 
-                </div>
-                <svg width="20px" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                  stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                </svg>
-              </button>
-
-              <button class="seeMoreBTN">
-                <div class="seeMoreBTN_text">
-                  <span>Comprar</span>
-                  <span>Ahora</span>
-
-                </div>
-                <div class="clone">
-                  <span>Comprar</span>
-                  <span>Ahora</span>
-
-                </div>
-                <svg width="20px" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                  stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                </svg>
-              </button>
-
-
+</a>
+ 
             </span>
 
 
@@ -320,44 +260,13 @@
     </ul>
   </section>
 
+  <section class="skateSection" id="skateRenderSection">
+ 
 
-
-  <!-- seccion donde se puede ingresar a la ropa de hombre mujer y zapass-->
-  <section class="clothingIndexSection">
-    <div class="ropaMujer">
-      <a href="/htmls/clothingWoman.html">
-        <img src="/assets/indexClothing/imgs/woman.webp" alt="">
-        <div>
-          <h3>ROPA MUJER</h3>
-        </div>
-      </a>
-    </div>
-
-    <div class="Skate">
-      <a href="#">
-        <img src="/assets/indexClothing/imgs/skate.webp" alt="">
-        <div>
-          <h3>SKATEBOARDING</h3>
-        </div>
-      </a>
-    </div>
-    <div class="ropaHombre">
-      <a href="/htmls/clothingman.html">
-        <img src="/assets/indexClothing/imgs/man.webp" alt="">
-        <div>
-          <h3>ROPA HOMBRE</h3>
-        </div>
-      </a>
-    </div>
-    <a href="#">
-      <div class="zapas">
-        <img src="/assets/indexClothing/imgs/shoes.webp" alt="">
-        <img src="/assets/indexClothing/imgs/shoes2.webp" alt="">
-        <div>
-          <h3>ZAPATILLAS</h3>
-        </div>
-    </a>
   </section>
+  <!-- BANNER DE BANS QUE ESTA DEBAJO DE LOS MENUS DE ROPA  -->
+
+  <a href="#" class="banner__vansIndex"><img src="/assets/banners/vans.jpg" alt=""></a>
 
 
   <!--  SECCION DE ROPA SUGERIDA EN EL INDEX, SON LAS MISMAS CARDS QUE EN LAS SECCIONES ESPECIFICAS DE ROPA DE HOMBRE Y MUJER  -->
@@ -375,9 +284,45 @@
 
   </section>
 
-  <!-- BANNER DE BANS QUE ESTA DEBAJO DE LOS MENUS DE ROPA  -->
+  <!-- seccion donde se puede ingresar a la ropa de hombre mujer y zapass-->
+  <section class="clothingIndexSection">
+    <div class="ropaMujer">
+      <a href="/htmls/woman/clothingwoman.html">
+        <img src="/assets/indexClothing/imgs/woman.webp" alt="">
+        <div>
+          <h3>ROPA MUJER</h3>
+        </div>
+      </a>
+    </div>
 
-  <a href="#" class="banner__vansIndex"><img src="/assets/banners/vans.jpg" alt=""></a>
+    <div class="Skate">
+      <a href="/htmls/skateboarding/skateboarding.html">
+        <img src="/assets/indexClothing/imgs/skate.webp" alt="">
+        <div>
+          <h3>SKATEBOARDING</h3>
+        </div>
+      </a>
+    </div>
+    <div class="ropaHombre">
+      <a href="/htmls/man/clothingman.html">
+        <img src="/assets/indexClothing/imgs/man.webp" alt="">
+        <div>
+          <h3>ROPA HOMBRE</h3>
+        </div>
+      </a>
+    </div>
+    <a href="/htmls/shoes/shoes.html">
+      <div class="zapas">
+        <img src="/assets/indexClothing/imgs/shoes.webp" alt="">
+        <img src="/assets/indexClothing/imgs/shoes2.webp" alt="">
+        <div>
+          <h3>ZAPATILLAS</h3>
+        </div>
+    </a>
+  </section>
+
+
+
 
   <!-- SECCION DEL CARRITO DE COMPRAS  -->
 
@@ -471,9 +416,28 @@
     </div>
   </section>
 
-  <!-- BANNER DE DC QUE ESTA DEBAJO DE LA SECCION DE DESCUENTOS EN LA PARTE INFERIOR DEL INDEX -->
+  <section class="loggin" id="logginSection">
+    <div class="logginContainer" id="logginContainer">
+      <video src="/assets/logginAssets/logginVideo.mp4" autoplay muted loop></video>
+      <form class="logginForm" id="logginForm">
+        <i class="fa-solid fa-xmark" id="closeLoggin"></i>
+        <h4>¡HOLA!</h4>
+        <h5>¡Que bueno tenerte de vuelta!</h5>
+        <input type="text" name="username" id="logginUsername" placeholder="Ingresa tu Usuario" autocomplete="off">
+        <small></small>
+        <input type="password" name="password" placeholder="Passsword" id="logginPassword" autocomplete="off" />
+        <small></small>
+        <hr>
+        <a href="/htmls/loggin/register.html">
+          <h5>¡¿No estas registrado?! Hacelo, amigo</h5>
+        </a>
 
-  <a href="#" class="banner__vansIndex"><img src="/assets/banners/dc.jpg" alt=""></a>
+        <button class="clothingCards__button" type="submit" id="logginSubmit">Iniciar Sesion</button>
+      </form>
+
+    </div>
+
+  </section>
 
 
   <!-- FOOTER NO DETALLADO QUE SE USA EN TODA LA PAGINA Y DONDE SALEN LAS REDES  -->

@@ -1,45 +1,50 @@
+ 
+
+
+
+
 @media (min-width: 1730px) {
-  .imgSlider{
+  .imgSlider {
     width: 1000px;
     height: 1000px;
   }
-  .textSliders h3{
+  .textSliders h3 {
     font-size: 5em;
   }
-  
-  .textSliders h4{
+
+  .textSliders h4 {
     font-size: 2em;
   }
-  .textSliders p{
+  .textSliders p {
     font-weight: bolder;
     font-size: 4em;
   }
-  .seeMoreBTN{
+  .seeMoreBTN {
     width: 400px;
     height: 70px;
   }
-  
-  .seeMoreBTN:nth-child(2){
+
+  .seeMoreBTN:nth-child(2) {
     width: 700px;
   }
-  
- 
-  .seeMoreBTN .clone > *,.seeMoreBTN .seeMoreBTN_text > * {
+
+  .seeMoreBTN .clone > *,
+  .seeMoreBTN .seeMoreBTN_text > * {
     opacity: 1;
     font-size: 2.8rem;
     transition: 0.2s;
-  
   }
   .seeMoreBTN svg {
     width: 50px;
   }
 }
-@media (max-width: 1250px){
-  .logginForm{
+@media (max-width: 1250px) {
+  .logginForm {
     gap: 10px;
+    padding: 10px;
   }
-  .logginForm input{
-    padding: 5px;
+  .logginForm input {
+    padding: 10px;
   }
   .logginForm h4 {
     font-size: 20px;
@@ -91,7 +96,7 @@
     height: 100%;
   }
   /*CLASE QUE DESPLIEGA EL MENU HAMBURGUESA */
-.navContainerActive {
+  .navContainerActive {
     display: block;
   }
 
@@ -126,7 +131,8 @@
     gap: 50px;
   }
 
-  .burger--loggin-register ul li a {
+  .burger--loggin-register ul li a,
+  .burger--loggin-register ul li h4 {
     font-size: clamp(0.75rem, 0rem + 3.3333vw, 1.25rem);
     color: var(--whiteColor);
   }
@@ -134,7 +140,9 @@
     transition: all 500ms;
     color: rgb(243, 243, 69);
   }
-
+  #logginSesion_li {
+    gap: 30px;
+  }
   .div12 {
     display: none !important;
   }
@@ -142,18 +150,16 @@
     display: none !important;
   }
 
-
   .indexZapaHero {
     width: 100%;
     height: 95vh;
     min-height: 900px;
   }
-  .indexZapaHeroCover h2{
+  .indexZapaHeroCover h2 {
     text-align: center;
   }
   .sliders {
     flex-direction: column;
-  
   }
 
   .textSliders {
@@ -165,19 +171,18 @@
     margin: 0 auto;
     margin-bottom: 30px;
   }
- 
-  .textSliders span{
+
+  .textSliders span {
     width: 100%;
   }
 
-  .clothingIndexSection{
+  .clothingIndexSection {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr  ;
+    grid-template-rows: 1fr 1fr;
 
     grid-template-areas:
       "ropaMujer Skate"
- 
       "ropaHombre zapas";
   }
   .zapas {
@@ -189,34 +194,43 @@
   .zapas img:first-child {
     display: none;
   }
-  .zapas img:nth-child(2){
+  .zapas img:nth-child(2) {
     display: block;
     height: 100%;
-   }
+  }
 
-   .sliderDiscountBottom{
-   
+  .sliderDiscountBottom {
     height: 20vh;
- 
   }
-  .discountContainerBottom{
-
-    font-size: .9em;
- 
+  .discountContainerBottom {
+    font-size: 0.9em;
   }
-  .discountContainerBottom img{
+  .discountContainerBottom img {
     height: 30%;
   }
 
+  .sesionContainer {
+    display: none;
+  }
 }
 @media (max-width: 800px) {
-  .logginContainer video {
-display: none;
+  .skateSection {
+    gap: 30px;
+    height: auto;
   }
-  .logginForm{
+  .skateContainer:nth-child(2){
+flex-direction: row-reverse;
+  }
+  .skateContainer_description__txtWrapper h4  {
+     text-align: center;
+  }
+  .logginContainer video {
+    display: none;
+  }
+  .logginForm {
     gap: 15px;
   }
-  .logginContainer{
+  .logginContainer {
     width: 80%;
   }
   .logginForm {
@@ -227,42 +241,25 @@ display: none;
 @media (max-width: 700px) {
   .clothingIndexSection {
     display: grid;
-    grid-template-columns: 1fr ;
+    grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
 
     grid-template-areas:
-      "ropaMujer" 
+      "ropaMujer"
       "Skate"
       "ropaHombre"
       "zapas";
   }
-  
-  .sliderDiscountBottom{
-  gap: 15px;
+
+  .sliderDiscountBottom {
+    gap: 15px;
     height: 15vh;
- 
   }
-  .discountContainerBottom{
-
-    font-size: .7em;
- 
+  .discountContainerBottom {
+    font-size: 0.7em;
   }
-  .discountContainerBottom img{
+  .discountContainerBottom img {
     height: 30%;
-  }
-
-
-
-
-
-
-
-}
-
-@media (max-width: 600px) {
-  .headerSection {
-    justify-content: space-between;
-    padding: 0 5px;
   }
 
   .burger--loggin-register {
@@ -272,6 +269,13 @@ display: none;
   .burger--loggin-register ul {
     gap: 10px;
   }
+}
+
+@media (max-width: 600px) {
+  .headerSection {
+    justify-content: space-between;
+    padding: 0 5px;
+  }
 
   .footerSection p {
     font-size: 10px;
@@ -280,7 +284,7 @@ display: none;
     height: 30px;
   }
 }
- 
+
 @media (max-width: 400px) {
   .footerSection p {
     font-size: 8px;
@@ -288,7 +292,6 @@ display: none;
   .footerSocialMedia {
     height: 20px;
   }
-
 
   .indexZapaHero {
     width: 100%;
@@ -299,7 +302,7 @@ display: none;
     flex-direction: column;
     padding-top: 15px;
   }
-  .imgSlider{
+  .imgSlider {
     width: 300px;
     height: 300px;
   }
@@ -313,37 +316,35 @@ display: none;
     margin-bottom: 30px;
   }
 
-
-
   .colorContainer_color {
     height: 50px;
     width: 50px;
     border-radius: 15px;
   }
-  .textSliders h3{
+  .textSliders h3 {
     font-size: 2em;
   }
-  
-  .textSliders h4{
-    font-size: .7em;
+
+  .textSliders h4 {
+    font-size: 0.7em;
   }
-  .textSliders p{
+  .textSliders p {
     font-weight: bolder;
     font-size: 2em;
   }
-  .seeMoreBTN{
+  .seeMoreBTN {
     width: 160px;
     height: 50px;
   }
-  
-  .seeMoreBTN:nth-child(2){
+
+  .seeMoreBTN:nth-child(2) {
     width: 270px;
   }
-  
- 
-  .seeMoreBTN .clone > *,.seeMoreBTN .seeMoreBTN_text > * {
-     font-size: 1rem;
-   }
+
+  .seeMoreBTN .clone > *,
+  .seeMoreBTN .seeMoreBTN_text > * {
+    font-size: 1rem;
+  }
   .seeMoreBTN svg {
     width: 15px;
   }

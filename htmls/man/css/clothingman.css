@@ -7,12 +7,12 @@ html {
   background-size: cover;
   background-attachment: fixed; */
 }
-a:visited {
+/* a:visited {
   color: black;
 }
 a:link {
   color: black;
-}
+} */
 .mainSection {
   display: flex;
   position: relative;
@@ -108,10 +108,6 @@ color: #dddddd;
   transform: rotate3d(0, 0, 1, 0deg);
   }
   }
-
-
-
-
 
 .dropdownMenu {
   display: flex;
@@ -267,14 +263,6 @@ width: 90%;
   background: brown;
 }
 
-
-
-
-
-
-
-
-
 #showDropDownOptions-estilo,
 #showDropDownOptions-talle,
 #showDropDownOptions-color,
@@ -296,10 +284,6 @@ width: 90%;
 #showDropDownOptions-prenda:checked + .interior {
   height: auto;
 }
-
-
-
-
 .bannerSection {
   display: flex;
   justify-content: center;
@@ -334,23 +318,7 @@ width: 90%;
   bottom: 0;
   padding-bottom: 15px;
 }
-/* .paginationButton {
-  padding: 0 5px;
-  height: 30px;
-  background-color: transparent;
-  font-weight: bold;
-  border: 1px solid rgb(112, 112, 112);
-  cursor: pointer;
-}
 
-.paginationButton:hover {
-  background-color: red;
-  color: var(--whiteColor);
-  border: none;
-}
-.paginationButton:active {
-  transform: translateY(1px);
-} */
 .paginationButton{
   min-width: 130px;
   min-height: 35px;

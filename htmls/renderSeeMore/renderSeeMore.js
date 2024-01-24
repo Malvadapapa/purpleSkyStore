@@ -1,3 +1,4 @@
+//importacion de la data desde el objeto de productos
 import { productsData } from "../../products.js";
 
 //variables pertenecientes al menu hamburguesa
@@ -7,34 +8,36 @@ const $openBurger = document.getElementById("burgerOpener");
 
 //variables pertenecientes al carrito de compras
 const $cartContainer = document.getElementById("cartMainContainer");
+const $cart = document.querySelector(".cartCards__Container");
 const $cartOpener = document.querySelector(".CartBtn");
 const $cartFocus = document.querySelector(".cartFocus");
-
-const $emptyCartBtn = document.getElementById("emptyCart");
-const $finishPurchase = document.getElementById("completePurchase");
-
-const $cart = document.querySelector(".cartCards__Container");
 const $showCartPrice = document.getElementById("showCartTotal");
 const $cartTotalCuantity = document.getElementById("cartLength");
 const $updateBubleQuantity = document.getElementById("cuantityCartBuble");
 const $carAnimatedIcon = document.querySelector(".IconContainer");
+const $emptyCartBtn = document.getElementById("emptyCart");
+const $finishPurchase = document.getElementById("completePurchase");
 
+//variables pertenecientes al renderizado del producto seleccionado
 const $renderSelectedProductContainer = document.getElementById(
   "productRenderContainer"
 );
 const $suggestedProductContainer = document.getElementById(
   "suggestedProductsContainer"
 );
+//variables del loggin
+const $closeLoggin = document.getElementById("closeLoggin");
+const $logginSecition = document.getElementById("logginSection");
+const $logginUsername = document.getElementById("logginUsername");
+const $logginPassword = document.getElementById("logginPassword");
+const $logginForm = document.getElementById("logginForm");
+const $burgerRegister = document.getElementById("burgerRegister");
+const $logginSesion_li = document.getElementById("logginSesion_li");
+const $sesionContainer = document.getElementById("sesionContainer");
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+//---------------------------------------------------------------------------
 
-const SAVE_CART = () => {
-  localStorage.setItem("cart", JSON.stringify(cart));
-};
-
-////////////////APERTURA Y CIERRE DEL MENU////////////////
-////////////////HAMBURGUESA////////////////
-
+// --------------Menu Hamburguesa--------------
 const OPEN_BURGER = () => {
   $burgerContainer.classList.toggle("navContainerActive");
 };
@@ -43,14 +46,7 @@ const CLOSE_BURGER = () => {
   $burgerContainer.classList.toggle("navContainerActive");
 };
 
-///////////////////////FUNCIONES QUE MANEJAN LA APERTURA Y CIERRE DEL CARRITO///////////////////////
-const DISABLE_CART_BUTTON = (btn) => {
-  if (!cart.length) {
-    btn.classList.add("btnCartDisable");
-  } else {
-    btn.classList.remove("btnCartDisable");
-  }
-};
+// -------------- Apertura y Cierre del Carrito de compras --------------
 
 const OPEN_CART = () => {
   $cartContainer.classList.toggle("cartActive");
@@ -65,6 +61,21 @@ const CLOSE_BURGER_IF_OUTSIDE = (e) => {
     $burgerContainer.classList.toggle("navContainerActive");
   }
 };
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+const SAVE_CART = () => {
+  localStorage.setItem("cart", JSON.stringify(cart));
+};
+
+const DISABLE_CART_BUTTON = (btn) => {
+  if (!cart.length) {
+    btn.classList.add("btnCartDisable");
+  } else {
+    btn.classList.remove("btnCartDisable");
+  }
+};
+
 const createProductTemplate = (cartProduct) => {
   const { price, id, img, description, quantity } = cartProduct;
 
@@ -279,9 +290,14 @@ const BUY_CART = () => {
   }
 };
 
-//Recupero los valores enviados por url
+
+const ON_LOAD_PAGE = () => {
+  DISABLE_CART_BUTTON($emptyCartBtn);
+  DISABLE_CART_BUTTON($finishPurchase);
+};
+
+// -------------- Renderizado del Producto Seleccionado -------------- 
 const selectedProductURL = new URLSearchParams(window.location.search);
-//los guardo en variables
 const selectedProductId = selectedProductURL.get("id");
 const selectedProductCategory = selectedProductURL.get("category");
 
@@ -371,6 +387,8 @@ data-id="${id}" data-description="${description}" data-price="${price}" data-img
 `);
 };
 
+// -------------- Configuracion Swipper --------------
+
 const INIT_SWIPPER = () => {
   let swiper = new Swiper(".mySwiper", {
     spaceBetween: 5,
@@ -381,17 +399,14 @@ const INIT_SWIPPER = () => {
   let swiper2 = new Swiper(".mySwiper2", {
     loop: true,
     spaceBetween: 10,
-
+zoom:true,
     thumbs: {
       swiper: swiper,
     },
   });
 };
 
-const ON_LOAD_PAGE = () => {
-  DISABLE_CART_BUTTON($emptyCartBtn);
-  DISABLE_CART_BUTTON($finishPurchase);
-};
+// -------------- Btn Comprar Ahora --------------
 
 const BUY_PRODUCT = (e) => {
   if (!e.target.classList.contains("buyCurrentProduct")) {
@@ -411,8 +426,11 @@ const BUY_PRODUCT = (e) => {
     }, 1000);
   }
 };
+
+// -------------- Renderizado de productos Sugeridos --------------
+
 const SELECT_RANDOM_ITEMS = (products, quantityOfElements) => {
-  const copy = [...products]; // Crea una copia del array original
+  const copy = [...products]; 
   copy.sort(() => Math.random() - 0.5);
   const elementosSeleccionados = copy.slice(0, quantityOfElements);
   return elementosSeleccionados;
@@ -479,29 +497,188 @@ ${arrayProducts
 </div>`);
 };
 
-const init = () => {
-  document.addEventListener("DOMContentLoaded", ON_LOAD_PAGE);
-  //menu hamburguesa
-  $openBurger.addEventListener("click", OPEN_BURGER);
-  $closeBurger.addEventListener("click", CLOSE_BURGER);
+// -------------- Inicio de Sesion --------------
+const users = JSON.parse(localStorage.getItem("users")) || [];
 
+const OPEN_LOGGIN = (e) => {
+  console.log(e.target);
+  if (e.target.classList.contains("openLoggin")) {
+    $logginSecition.classList.toggle("showLoggin");
+  }
+};
+
+const CLOSE_LOGGIN = () => {
+  $logginSecition.classList.toggle("showLoggin");
+};
+const CLOSE_LOGGIN_IF_OUTSIDE = (e) => {
+  if (e.target.classList.contains("loggin")) {
+    $logginSecition.classList.toggle("showLoggin");
+  }
+};
+const LOGGOUT = (e) => {
+  if (e.target.classList.contains("loggOut")) {
+    if (window.confirm("Estas seguro que deseas salir?")) {
+      setTimeout(() => {
+        sessionStorage.removeItem("activeUser");
+        location.reload();
+      }, 1000);
+    } else {
+      return;
+    }
+  }
+};
+
+const CHECK_IF_LOGGIN_EMPTY = (input) => {
+  return !input.value.trim().length;
+};
+
+const CHECK_EXISTING_LOGGIN_USERNAME = (input) => {
+  return users.some((user) => user.userName === input.value.trim());
+};
+const CHECK_IS_MATCHING_PASSWORD = (input) => {
+  const user = users.find(
+    (user) => user.userName === $logginUsername.value.trim()
+  );
+  return user.password === input.value.trim();
+};
+
+const SHOW_LOGGIN_ERROR = (input, message, inputSmall) => {
+  inputSmall.innerHTML = "";
+  input.classList.remove("formFieldsuccess");
+  input.classList.add("formFieldError");
+  inputSmall.innerHTML = message;
+};
+
+const SHOW_LOGGIN_SUCCES = (input, inputSmall) => {
+  input.classList.remove("formFieldError");
+  input.classList.add("formFieldsuccess");
+  inputSmall.innerHTML = "";
+};
+const RESET_FORM = (input, inputSmall) => {
+  inputSmall.innerHTML = "";
+  input.classList.remove("formFieldsuccess");
+  input.classList.remove("formFieldError");
+};
+const IS_VALID_ACCOUNT = (input) => {
+  let valid = false;
+  const formFieldSmall = input.nextElementSibling;
+  if (CHECK_IF_LOGGIN_EMPTY(input)) {
+    SHOW_LOGGIN_ERROR(input, "Este campo no debe estar vacio", formFieldSmall);
+    return;
+  }
+  if (!CHECK_EXISTING_LOGGIN_USERNAME(input)) {
+    SHOW_LOGGIN_ERROR(
+      input,
+      "El Usuario ingresado no existe =S",
+      formFieldSmall
+    );
+    return;
+  }
+  SHOW_LOGGIN_SUCCES(input, formFieldSmall);
+
+  valid = true;
+  return valid;
+};
+
+const IS_VALID_PASSWORD = (input) => {
+  let valid = false;
+  const formFieldSmall = input.nextElementSibling;
+  if (CHECK_IF_LOGGIN_EMPTY(input)) {
+    SHOW_LOGGIN_ERROR(input, "Este campo no debe estar vacio", formFieldSmall);
+    return;
+  }
+  if (!CHECK_IS_MATCHING_PASSWORD(input)) {
+    SHOW_LOGGIN_ERROR(
+      input,
+      "La contraseña ingresada no es valida",
+      formFieldSmall
+    );
+    return;
+  }
+
+  SHOW_LOGGIN_SUCCES(input, formFieldSmall);
+
+  valid = true;
+  return valid;
+};
+
+const LOGGIN = (e) => {
+  e.preventDefault();
+  let validUsername = IS_VALID_ACCOUNT($logginUsername);
+  let validPassword = IS_VALID_PASSWORD($logginPassword);
+
+  if (validUsername && validPassword) {
+    const user = users.find(
+      (user) => user.userName === $logginUsername.value.trim()
+    );
+    sessionStorage.setItem("activeUser", JSON.stringify(user));
+    alert("Has iniciado sesion correctamente =)");
+    setTimeout(() => {
+      location.reload();
+    }, 1000);
+    return;
+  }
+
+};
+const activeUser = sessionStorage.activeUser
+  ? JSON.parse(sessionStorage.activeUser)
+  : false;
+
+const IS_ACTIVE_USER = () => {
+  if (activeUser) {
+    $burgerRegister.classList.toggle("isLoggedIn");
+    $logginSesion_li.innerHTML = `<h3>${activeUser.userName}</h3>   <span class="loggOut" > Salir <i class="fa fa-sign-out" aria-hidden="true"></i></span>`;
+    $sesionContainer.innerHTML = `<h3>${activeUser.userName}</h3>   <span class="loggOut" > Salir <i class="fa fa-sign-out" aria-hidden="true"></i></span>`;
+    return;
+  } else {
+    $logginSesion_li.innerHTML = `<a href="#" class="openLoggin" id="openLogginBurger">¡INICIAR SESION!</a>`;
+    $sesionContainer.innerHTML = `
+   <div data-tooltip="¡INICIAR SESION!" data-flow="bottom" class="loggin-register openLoggin" id="openLoggin">
+   <img  src="/assets/headerAssets/logginIcon.svg" class="openLoggin" alt="" />
+   </div>
+
+   <a href="/htmls/loggin/register.html">
+   <div data-tooltip="No estas registrado? ¡Registrate!" data-flow="bottom" class="loggin-register">
+     <img src="/assets/headerAssets/registerIcon.svg" alt="" />
+   </div>
+ </a>
+
+   `;
+  }
+};
+
+// -------------- Funcion Inicializadora --------------
+
+const init = () => {
+
+    // -------------- Menu Hamburgesa --------------
+    $openBurger.addEventListener("click", OPEN_BURGER);
+    $closeBurger.addEventListener("click", CLOSE_BURGER);
+    // -------------- Renderizado producto seleccionado y cards--------------
   RENDER_SELECTED_PRODUCT(selectedProductState.selectedProduct);
   RENDER_SUGGESTED(selectedRandomItems);
+  $suggestedProductContainer.addEventListener("click", ADD_PRODUCT_CART);
+    // -------------- Swiper =) --------------
   INIT_SWIPPER();
-
+  // -------------- Carrito de Compras --------------
   $cartContainer.addEventListener("click", CLOSE_BURGER_IF_OUTSIDE);
   $cartOpener.addEventListener("click", OPEN_CART);
   $cartFocus.addEventListener("click", CLOSE_CART_IF_OUTSIDE);
-
+  document.addEventListener("DOMContentLoaded", ON_LOAD_PAGE);
   document.addEventListener("DOMContentLoaded", RENDER_CART);
   $renderSelectedProductContainer.addEventListener("click", ADD_PRODUCT_CART);
   $renderSelectedProductContainer.addEventListener("click", BUY_PRODUCT);
-
-  $suggestedProductContainer.addEventListener("click", ADD_PRODUCT_CART);
-
   $cart.addEventListener("click", CART_HANDLE_CUANTITY);
-
   $emptyCartBtn.addEventListener("click", EMPTY_CART);
   $finishPurchase.addEventListener("click", BUY_CART);
+  // -------------- Inicio de sesion --------------
+  $closeLoggin.addEventListener("click", CLOSE_LOGGIN);
+  $sesionContainer.addEventListener("click", OPEN_LOGGIN);
+  $logginSesion_li.addEventListener("click", OPEN_LOGGIN);
+  $sesionContainer.addEventListener("click", LOGGOUT);
+  $logginSesion_li.addEventListener("click", LOGGOUT);
+  $logginSecition.addEventListener("click", CLOSE_LOGGIN_IF_OUTSIDE);
+  $logginForm.addEventListener("submit", LOGGIN);
+  IS_ACTIVE_USER();
 };
 init();

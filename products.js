@@ -697,7 +697,7 @@ const productsData = {
            description: "47 STREET HELL",
             "price": 17800,
             "discountType": "4 cuotas sin interés de $4.450,00",
-            "priority": false
+            "priority": true
         },
         {
             id: "e66b585c-f024-438d-a99a-140872d69e8b",
@@ -778,7 +778,7 @@ const productsData = {
            description: "KITTY BOW H",
             "price": 16700,
             "discountType": "4 cuotas sin interés de $4.175,00",
-            "priority": false
+            "priority": true
         },
         {
             id: "b2313456-9405-47c9-aed5-3d6964002ad4",
@@ -829,7 +829,7 @@ const productsData = {
            description: "PSYCHIC ESTAMPADO",
             "price": 5799,
             "discountType": "4 cuotas sin interés de $1.449,75",
-            "priority": false
+            "priority": true
         },
         {
             id: "e5ad8cf6-05a5-4d19-87cf-18b5407785a7",
@@ -904,7 +904,7 @@ const productsData = {
            description: "JEAN RIFFLE CHUPIN TIRO ALTO",
             "price": 17000,
             "discountType": "4 cuotas sin interés de $4.250,00",
-            "priority": false
+            "priority": true
         },
         {
             id: "1db3c7e6-7f02-4fec-9fda-d6cd199a6703",
@@ -954,7 +954,7 @@ const productsData = {
            description: "RUSTY NOAH FULL LENGTH",
             "price": 37990,
             "discountType": "4 cuotas sin interés de $9.497,50",
-            "priority": false
+            "priority": true
         },
         {
             id: "c61bf2c4-5b7e-4e4a-b445-549dc8cedbfc",
@@ -1004,7 +1004,7 @@ const productsData = {
            description: "BUZO CANGURO BILLABONG CALIFORNIA",
             "price": 31200,
             "discountType": "4 cuotas sin interés de $10400,00",
-            "priority": false
+            "priority": true
         },
         {
             id: "be025178-5866-42c5-8faa-679e452f65bd",
@@ -1104,7 +1104,7 @@ const productsData = {
            description: "BUZO CANGURO BILLABONG ESSENTIAL",
             "price": 18499,
             "discountType": "4 cuotas sin interés de $4.624,75",
-            "priority": false
+            "priority": true
         },
         {
             id: "187801b7-250a-4f81-a07f-eb716a9316d4",
@@ -1256,7 +1256,7 @@ const productsData = {
            description: "CAMPERA DE NIEVE ONEILL RED",
             "price": 106650,
             "discountType": "4 cuotas sin interés de $26.662,50",
-            "priority": false
+            "priority": true
         },
         {
             id: "bb4ad6b1-af2b-474e-9444-f31d59947052",
@@ -1529,7 +1529,7 @@ const productsData = {
                 }
             ],
             color: [
-                "Negro",
+                "Verde",
                 "Azul",
                 "Blanco"
             ],
@@ -1537,7 +1537,7 @@ const productsData = {
                 "/assets/clothes/zapas/10.webp",
                 "/assets/clothes/zapas/10b.webp"
             ],
-           description: "UNION LA",
+           description: "ZAPATILLA LACOSTE T-CLIP",
             "price": 58500,
             "discountType": "3 cuotas sin interés de $19500,00",
             "priority": false
@@ -1693,6 +1693,31 @@ const productsData = {
            description: "W ULTRARANGE RAPIDWELD",
             "price": 71690,
             "discountType": "3 cuotas sin interés de $23896,67",
+            "priority": true
+        },
+        {
+            id: "f716845e-0b3e-44df-867e-4a0b8301f56a",
+            type: "ZAPAS",
+            size: [
+                {
+                    "36/37": 4,
+                    "38/39": 10,
+                    "40/41": 4,
+                    "42/43": 3,
+                    "44/45": 2
+                }
+            ],
+            color: [
+                "Blanco",
+                "Rosa"
+            ],
+            img: [
+                "/assets/clothes/zapas/18.webp",
+                "/assets/clothes/zapas/18b.webp"
+            ],
+           description: "MANTECA V SS GIRL",
+            "price": 87000,
+            "discountType": "3 cuotas sin interés de $29000",
             "priority": true
         }
     ],
