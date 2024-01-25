@@ -1,8 +1,3 @@
- 
-
-
-
-
 @media (min-width: 1730px) {
   .imgSlider {
     width: 1000px;
@@ -218,11 +213,13 @@
     gap: 30px;
     height: auto;
   }
-  .skateContainer:nth-child(2){
-flex-direction: row-reverse;
+  .skateContainer {
+    width: 90%;
+    flex-direction: row-reverse;
+    gap: 10px;
   }
-  .skateContainer_description__txtWrapper h4  {
-     text-align: center;
+  .skateContainer_description__txtWrapper h4 {
+    text-align: center;
   }
   .logginContainer video {
     display: none;
@@ -238,6 +235,13 @@ flex-direction: row-reverse;
     padding: 10px;
   }
 }
+@media (max-width: 860px) {
+
+  .clothingCards {
+    width: 95%;
+  }
+}
+
 @media (max-width: 700px) {
   .clothingIndexSection {
     display: grid;

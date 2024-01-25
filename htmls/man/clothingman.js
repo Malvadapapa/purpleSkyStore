@@ -47,6 +47,12 @@ const $burgerRegister = document.getElementById("burgerRegister");
 const $logginSesion_li = document.getElementById("logginSesion_li");
 const $sesionContainer = document.getElementById("sesionContainer");
 
+//variables del modal de resumen de compra
+const $productsDialogSumary = document.getElementById("productsDialogSumary");
+const $sumarydialogContainer = document.getElementById("sumarydialogContainer");
+const $TotalDialogPrice = document.getElementById("TotalDialogPrice");
+const $cancelPurchase = document.getElementById("cancelPurchase");
+const $yesFinishPurchase = document.getElementById("yesFinishPurchase");
 //---------------------------------------------------------------------------
 
 // --------------Menu Hamburguesa--------------
@@ -558,21 +564,47 @@ const EMPTY_CART = () => {
   }
 };
 
+const CANCEL_PURCHASE = () => {
+  if (window.confirm("¿Quieres eliminar tu carrito de compras tambien? ๏̯͡๏﴿ ")) {
+    CLEAN_CART();
+    $productsDialogSumary.close();
+    return;
+  } else {
+    $productsDialogSumary.close();
+    return;
+  }
+};
+const FINISH_PURCHASE = () => {
+  $productsDialogSumary.close();
+
+  alert(
+    "¡Estamos muy felices por tu compra!  (っ◕‿◕)っ  te llevaremos nuevamente al inicio"
+  );
+  CLEAN_CART();
+
+  setTimeout(() => {
+    window.location.href = "/index.html";
+  }, 1000);
+};
+
 const BUY_CART = () => {
   if (!cart.length) {
     return;
   }
-  if (window.confirm("¿Estas seguro que deseas realizar la compra?")) {
-    CLEAN_CART();
-    alert(
-      "¡Compra realizada con exito!, te llevaremos nuevamente al inicio =)"
-    );
-    setTimeout(() => {
-      window.location.href = "/index.html";
-    }, 1000);
-  } else {
-    return;
-  }
+  OPEN_CART();
+  $sumarydialogContainer.innerHTML = cart
+    .map((product) => {
+      let { description, price, quantity } = product;
+      return `
+    <span>
+  ${quantity}u de ${description}----- $ ${price * quantity}
+    </span>
+    `;
+    })
+    .join(" ");
+    $TotalDialogPrice.innerHTML = `$ ${CART_TOTAL_PRICE()}`;
+  $productsDialogSumary.showModal();
+
 };
 
 const ON_LOAD_PAGE = () => {
@@ -762,6 +794,9 @@ const init = () => {
   $logginSecition.addEventListener("click", CLOSE_LOGGIN_IF_OUTSIDE);
   $logginForm.addEventListener("submit", LOGGIN);
   IS_ACTIVE_USER();
+  // -------------- Listeners del modal de resumen de compra --------------
+  $cancelPurchase.addEventListener("click", CANCEL_PURCHASE);
+  $yesFinishPurchase.addEventListener("click", FINISH_PURCHASE);
 };
 
 init();

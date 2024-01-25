@@ -26,12 +26,15 @@ const $finishPurchase = document.getElementById("completePurchase");
 
 const $cartOpener = document.querySelector(".CartBtn");
 const $cartFocus = document.querySelector(".cartFocus");
- 
 
-
-const $skateRenderSection = document.getElementById("skateRenderSection")
-
-
+const $skateRenderSection = document.getElementById("skateRenderSection");
+const $newsSliderContainer = document.getElementById("newsSliderContainer");
+//variables del modal de resumen de compra
+const $productsDialogSumary = document.getElementById('productsDialogSumary')
+const $sumarydialogContainer = document.getElementById('sumarydialogContainer')
+const $TotalDialogPrice = document.getElementById('TotalDialogPrice')
+const $cancelPurchase = document.getElementById('cancelPurchase')
+const $yesFinishPurchase = document.getElementById('yesFinishPurchase')
 ////////////////APERTURA Y CIERRE DEL MENU////////////////
 ////////////////HAMBURGUESA////////////////
 
@@ -44,8 +47,7 @@ const CLOSE_BURGER = () => {
 };
 
 const OPEN_CART = () => {
-  console.log("holi");
-  $cartContainer.classList.toggle("cartActive");
+   $cartContainer.classList.toggle("cartActive");
   $cartFocus.classList.toggle("cartFocusActive");
 };
 const CLOSE_CART_IF_OUTSIDE = () => {
@@ -141,9 +143,9 @@ const CREATE_CART_PRODUCT = (product) => {
 const IS_EXISTING_PRODUCT = (product) => {
   return cart.find((item) => item.id === product.id);
 };
-/* 
+
 const ADD_PRODUCT_CART = (e) => {
-  if (!e.target.classList.contains("clothingCards__button")) {
+  if (!e.target.classList.contains("addToCart")) {
     return;
   }
 
@@ -176,7 +178,7 @@ const ADD_PRODUCT_CART = (e) => {
 
   RENDER_CART();
 };
- */
+
 const HANDLE_PLUS_QUANTITY = (id) => {
   const existingProduct = cart.find((item) => item.id === id);
   ADD_PRODUCT_CUANTITY(existingProduct);
@@ -268,27 +270,50 @@ const EMPTY_CART = () => {
   }
 };
 
+const CANCEL_PURCHASE = ()=> {
+  if (window.confirm('¿Quieres eliminar tu carrito de compras tambien? ๏̯͡๏﴿ ')) {
+    CLEAN_CART();
+    $productsDialogSumary.close();
+    return
+  } else {
+    $productsDialogSumary.close();
+    return
+  }
+
+}
+const FINISH_PURCHASE = () => {
+  $productsDialogSumary.close();
+  CLEAN_CART();
+  alert(
+    "¡Estamos muy felices por tu compra!  (っ◕‿◕)っ  te llevaremos nuevamente al inicio"
+  );
+  setTimeout(() => {
+    window.location.href = "/index.html";
+  }, 1000);
+}
+
+
 const BUY_CART = () => {
   if (!cart.length) {
     return;
   }
-  if (window.confirm("¿Estas seguro que deseas realizar la compra?")) {
-    CLEAN_CART();
-    alert(
-      "¡Compra realizada con exito!, te llevaremos nuevamente al inicio =)"
-    );
-    setTimeout(() => {
-      window.location.href = "/index.html";
-    }, 1000);
-  } else {
-    return;
-  }
+  OPEN_CART()
+  $sumarydialogContainer.innerHTML = cart.map( product => {
+    let {description, price, quantity} = product;
+    return`
+    <span>
+  ${quantity}u de ${description}----- $ ${price*quantity}
+    </span>
+    `}).join(' ')
+
+  $productsDialogSumary.showModal();
+  $TotalDialogPrice.innerHTML = `$ ${CART_TOTAL_PRICE()}`
 };
 
 const ON_LOAD_PAGE = () => {
   DISABLE_CART_BUTTON($emptyCartBtn);
   DISABLE_CART_BUTTON($finishPurchase);
-     GET_RANDOM_SKATE_OBJETS(productsData['skateboarding']) 
+  GET_RANDOM_SKATE_OBJETS(productsData["skateboarding"]);
 
   let swiper = new Swiper(".mySwiper", {
     spaceBetween: 0,
@@ -316,9 +341,40 @@ const ON_LOAD_PAGE = () => {
       clickable: true,
     },
   });
+
+  let swiper3 = new Swiper(".indexCardsSwiper", {
+    centeredSlides: true,
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 10,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    autoplay: {
+      //autoplay
+      delay: 3000,
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      860: {
+        slidesPerView: 3,
+        spaceBetween: 35,
+      },
+      1224: {
+        slidesPerView: 4,
+        spaceBetween: 45,
+      },
+      1800: {
+        slidesPerView: 5,
+        spaceBetween: 50,
+      },
+    },
+  });
 };
-
-
 
 //----------INICIO DE SESION ----------//
 const users = JSON.parse(localStorage.getItem("users")) || [];
@@ -453,9 +509,8 @@ const IS_ACTIVE_USER = () => {
     $burgerRegister.classList.toggle("isLoggedIn");
     $logginSesion_li.innerHTML = `<h3>${activeUser.userName}</h3>   <span class="loggOut" > Salir <i class="fa fa-sign-out" aria-hidden="true"></i></span>`;
     $sesionContainer.innerHTML = `<h3>${activeUser.userName}</h3>   <span class="loggOut" > Salir <i class="fa fa-sign-out" aria-hidden="true"></i></span>`;
-    return
+    return;
   } else {
-
     $logginSesion_li.innerHTML = `<a href="#" class="openLoggin" id="openLogginBurger">¡INICIAR SESION!</a>`;
     $sesionContainer.innerHTML = `
    <div data-tooltip="¡INICIAR SESION!" data-flow="bottom" class="loggin-register openLoggin" id="openLoggin">
@@ -472,15 +527,15 @@ const IS_ACTIVE_USER = () => {
   }
 };
 
-
 // -------------- Renderizado de objetos de Skate en el Index --------------
 
 const RENDER_RANDOM_SKATE_ITEMS = (array) => {
-  const selectedProductCategory = "skateboarding"
-  return $skateRenderSection.innerHTML = `
-  ${array.map((product) => {
+  const selectedProductCategory = "skateboarding";
+  return ($skateRenderSection.innerHTML = `
+  ${array
+    .map((product) => {
       const { id, img, description, price, discountType } = product;
-      return`
+      return `
     <div class="skateContainer">
     <div class="swiper sliderSkate">
       <div class="swiper-wrapper ">
@@ -520,51 +575,85 @@ const RENDER_RANDOM_SKATE_ITEMS = (array) => {
     
     
     
-    `
-  }).join("")}
-  `
-}
+    `;
+    })
+    .join("")}
+  `);
+};
 const GET_RANDOM_SKATE_OBJETS = (array) => {
   const obtenerIndiceAleatorio = (max) => Math.floor(Math.random() * max);
-    const [indice1, indice2] = [obtenerIndiceAleatorio(array.length), obtenerIndiceAleatorio(array.length - 1)];
+  const [indice1, indice2] = [
+    obtenerIndiceAleatorio(array.length),
+    obtenerIndiceAleatorio(array.length - 1),
+  ];
   const segundoIndiceAjustado = indice2 >= indice1 ? indice2 + 1 : indice2;
-let randomArray = [array[indice1], array[segundoIndiceAjustado]];
+  let randomArray = [array[indice1], array[segundoIndiceAjustado]];
 
-  return RENDER_RANDOM_SKATE_ITEMS(randomArray)
+  return RENDER_RANDOM_SKATE_ITEMS(randomArray);
 };
- 
 
+const GET_RANDOM_NUMBER = () => {
+  return Math.random() - 0.5;
+};
 
+const RENDER_PRIORITY_ENTRIES = (products) => {
+  return ($newsSliderContainer.innerHTML = products.map((objet) => {
+    const { id, img, description, price, discountType, origin } = objet;
 
+    return `
+ <div class="swiper-slide">
+ <div class="clothingCards">
+   <img src="${img[0]}" alt="${description}">
+   <div class="clothingCards_div">
+    <p>${description}</p>
+    <p>$${price}</p>
+    <p>${discountType}</p>
+    <span>
+      <button class="clothingCards__button addToCart" data-id="${id}" data-description="${description}" data-price="${price}" data-img="${img[0]}">AGREGAR AL CARRITO</button>
+<a href="/htmls/renderSeeMore/renderSeeMore.html?id=${id}&amp;category=${origin}" class="seeMore_btn"> 
+ VER MAS 
+ </a>    
+      
+    </span>
+  </div>
+</div>
+</div>
 
+  `;
+  }));
+};
 
+const allProducts = Object.values(productsData).flat();
 
+const priorityCards = allProducts.filter((objeto) => objeto.priority === true);
 
-const todasLasEntries = Object.values(productsData).flat();
-const priorityCards = todasLasEntries.filter(objeto => objeto.priority === true);
-console.log(priorityCards)
-const obtenerNumeroAleatorio = () => Math.random() - 0.5;
- 
-const objetosAleatorios = priorityCards.sort(obtenerNumeroAleatorio);
+const randomEntries = priorityCards.sort(GET_RANDOM_NUMBER);
 
-// Tomar los primeros 12 elementos del array
-const primerosDoceObjetos = objetosAleatorios.slice(0, 12);
+const firstEightEntries = randomEntries.slice(0, 12);
 
-console.log(primerosDoceObjetos);
+console.log(firstEightEntries);
 
+const FIND_KEY_BY_ID = (id) => {
+  for (const key in productsData) {
+    const found = productsData[key].find((producto) => producto.id === id);
+    if (found) {
+      return key;
+    }
+  }
+};
 
+const PRODUCTS_WHIT_ORIGIN = firstEightEntries.map((product) => {
+  const key = FIND_KEY_BY_ID(product.id);
+  const origin = key ? key : "unkonwOrigin";
+  return { ...product, origin };
 
+});
 
-
-
-
-
-
-
+console.log(PRODUCTS_WHIT_ORIGIN);
 
 const init = () => {
-
-
+  
+ RENDER_PRIORITY_ENTRIES(PRODUCTS_WHIT_ORIGIN)
   //menu hamburguesa
   $openBurger.addEventListener("click", OPEN_BURGER);
   $closeBurger.addEventListener("click", CLOSE_BURGER);
@@ -573,6 +662,7 @@ const init = () => {
   $cartOpener.addEventListener("click", OPEN_CART);
   $cartFocus.addEventListener("click", CLOSE_CART_IF_OUTSIDE);
   document.addEventListener("DOMContentLoaded", RENDER_CART);
+  document.body.addEventListener('click', ADD_PRODUCT_CART);
   /*     $cardContainer.addEventListener("click", ADD_PRODUCT_CART); */
   $cart.addEventListener("click", CART_HANDLE_CUANTITY);
 
@@ -593,6 +683,9 @@ const init = () => {
 
   $logginForm.addEventListener("submit", LOGGIN);
   IS_ACTIVE_USER();
+// -------------- Listeners del modal de resumen de compra --------------
+  $cancelPurchase.addEventListener('click', CANCEL_PURCHASE)
+  $yesFinishPurchase.addEventListener('click', FINISH_PURCHASE)
 };
 
 init();

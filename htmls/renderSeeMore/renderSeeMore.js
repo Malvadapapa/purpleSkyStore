@@ -35,6 +35,12 @@ const $burgerRegister = document.getElementById("burgerRegister");
 const $logginSesion_li = document.getElementById("logginSesion_li");
 const $sesionContainer = document.getElementById("sesionContainer");
 
+//variables del modal de resumen de compra
+const $productsDialogSumary = document.getElementById("productsDialogSumary");
+const $sumarydialogContainer = document.getElementById("sumarydialogContainer");
+const $TotalDialogPrice = document.getElementById("TotalDialogPrice");
+const $cancelPurchase = document.getElementById("cancelPurchase");
+const $yesFinishPurchase = document.getElementById("yesFinishPurchase");
 //---------------------------------------------------------------------------
 
 // --------------Menu Hamburguesa--------------
@@ -273,30 +279,55 @@ const EMPTY_CART = () => {
   }
 };
 
+const CANCEL_PURCHASE = () => {
+  if (window.confirm("¿Quieres eliminar tu carrito de compras tambien? ๏̯͡๏﴿ ")) {
+    CLEAN_CART();
+    $productsDialogSumary.close();
+    return;
+  } else {
+    $productsDialogSumary.close();
+    return;
+  }
+};
+const FINISH_PURCHASE = () => {
+  $productsDialogSumary.close();
+
+  alert(
+    "¡Estamos muy felices por tu compra!  (っ◕‿◕)っ  te llevaremos nuevamente al inicio"
+  );
+  CLEAN_CART();
+
+  setTimeout(() => {
+    window.location.href = "/index.html";
+  }, 1000);
+};
+
 const BUY_CART = () => {
   if (!cart.length) {
     return;
   }
-  if (window.confirm("¿Estas seguro que deseas realizar la compra?")) {
-    CLEAN_CART();
-    alert(
-      "¡Compra realizada con exito!, te llevaremos nuevamente al inicio =)"
-    );
-    setTimeout(() => {
-      window.location.href = "/index.html";
-    }, 1000);
-  } else {
-    return;
-  }
-};
+  OPEN_CART();
+  $sumarydialogContainer.innerHTML = cart
+    .map((product) => {
+      let { description, price, quantity } = product;
+      return `
+    <span>
+  ${quantity}u de ${description}----- $ ${price * quantity}
+    </span>
+    `;
+    })
+    .join(" ");
 
+  $productsDialogSumary.showModal();
+  $TotalDialogPrice.innerHTML = `$ ${CART_TOTAL_PRICE()}`;
+};
 
 const ON_LOAD_PAGE = () => {
   DISABLE_CART_BUTTON($emptyCartBtn);
   DISABLE_CART_BUTTON($finishPurchase);
 };
 
-// -------------- Renderizado del Producto Seleccionado -------------- 
+// -------------- Renderizado del Producto Seleccionado --------------
 const selectedProductURL = new URLSearchParams(window.location.search);
 const selectedProductId = selectedProductURL.get("id");
 const selectedProductCategory = selectedProductURL.get("category");
@@ -399,7 +430,7 @@ const INIT_SWIPPER = () => {
   let swiper2 = new Swiper(".mySwiper2", {
     loop: true,
     spaceBetween: 10,
-zoom:true,
+    zoom: true,
     thumbs: {
       swiper: swiper,
     },
@@ -409,12 +440,19 @@ zoom:true,
 // -------------- Btn Comprar Ahora --------------
 
 const BUY_PRODUCT = (e) => {
+  
   if (!e.target.classList.contains("buyCurrentProduct")) {
     return;
   }
-  if (
+  $sumarydialogContainer.innerHTML = `1u de ${selectedProductState.selectedProduct.description}----- $ ${selectedProductState.selectedProduct.price}`
+  $TotalDialogPrice.innerHTML = `$ ${selectedProductState.selectedProduct.price}`;
+  $productsDialogSumary.showModal();
+
+
+
+/*   if (
     window.confirm(
-      `Esta seguro que desea comprar ${selectedProductState.selectedProduct.description} por $ ${selectedProductState.selectedProduct.price}, se vaciara tu carrito de compras`
+      `Esta seguro que desea comprar  por $ , se vaciara tu carrito de compras`
     )
   ) {
     CLEAN_CART();
@@ -424,13 +462,13 @@ const BUY_PRODUCT = (e) => {
     setTimeout(() => {
       window.location.href = "/index.html";
     }, 1000);
-  }
+  } */
 };
 
 // -------------- Renderizado de productos Sugeridos --------------
 
 const SELECT_RANDOM_ITEMS = (products, quantityOfElements) => {
-  const copy = [...products]; 
+  const copy = [...products];
   copy.sort(() => Math.random() - 0.5);
   const elementosSeleccionados = copy.slice(0, quantityOfElements);
   return elementosSeleccionados;
@@ -618,7 +656,6 @@ const LOGGIN = (e) => {
     }, 1000);
     return;
   }
-
 };
 const activeUser = sessionStorage.activeUser
   ? JSON.parse(sessionStorage.activeUser)
@@ -650,15 +687,14 @@ const IS_ACTIVE_USER = () => {
 // -------------- Funcion Inicializadora --------------
 
 const init = () => {
-
-    // -------------- Menu Hamburgesa --------------
-    $openBurger.addEventListener("click", OPEN_BURGER);
-    $closeBurger.addEventListener("click", CLOSE_BURGER);
-    // -------------- Renderizado producto seleccionado y cards--------------
+  // -------------- Menu Hamburgesa --------------
+  $openBurger.addEventListener("click", OPEN_BURGER);
+  $closeBurger.addEventListener("click", CLOSE_BURGER);
+  // -------------- Renderizado producto seleccionado y cards--------------
   RENDER_SELECTED_PRODUCT(selectedProductState.selectedProduct);
   RENDER_SUGGESTED(selectedRandomItems);
   $suggestedProductContainer.addEventListener("click", ADD_PRODUCT_CART);
-    // -------------- Swiper =) --------------
+  // -------------- Swiper =) --------------
   INIT_SWIPPER();
   // -------------- Carrito de Compras --------------
   $cartContainer.addEventListener("click", CLOSE_BURGER_IF_OUTSIDE);
@@ -680,5 +716,8 @@ const init = () => {
   $logginSecition.addEventListener("click", CLOSE_LOGGIN_IF_OUTSIDE);
   $logginForm.addEventListener("submit", LOGGIN);
   IS_ACTIVE_USER();
+  // -------------- Listeners del modal de resumen de compra --------------
+  $cancelPurchase.addEventListener("click", CANCEL_PURCHASE);
+  $yesFinishPurchase.addEventListener("click", FINISH_PURCHASE);
 };
 init();

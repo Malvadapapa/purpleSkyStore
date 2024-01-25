@@ -1757,7 +1757,7 @@ const productsData = {
                 "/assets/clothes/skateboarding/2.webp",
                 "/assets/clothes/skateboarding/2b.webp"
             ],
-           description: "SKATE COMPLETO RED DRAGON SPACE MAN",
+           description: "SKATE COMPLETO SPACE MAN",
             "price": 47700,
             "discountType": "4 cuotas sin interés de $11.925,00",
             "priority": true
